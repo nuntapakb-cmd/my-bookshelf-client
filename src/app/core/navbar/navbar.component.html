@@ -1,0 +1,169 @@
+<!-- src/app/core/navbar/navbar.component.html -->
+<nav class="app-navbar">
+ <div class="nav-left">
+   <a class="brand" routerLink="/" title="{{ 'APP_TITLE' | translate }}">
+     <img
+       src="/MyBookshelf(400x150px)-2.svg"
+       alt="{{ 'APP_TITLE' | translate }} logo"
+       class="site-logo"
+       width="400"
+     />
+   </a>
+
+
+   <ng-container *ngIf="auth.isLoggedIn()">
+     <a routerLink="/home" class="nav-link">{{ 'NAV_HOME' | translate }}</a>
+     <a routerLink="/books" class="nav-link">{{ 'NAV_BOOKS' | translate }}</a>
+     <a routerLink="/citat" class="nav-link">{{ 'NAV_QUOTES' | translate }}</a>
+   </ng-container>
+ </div>
+
+
+ <div class="nav-right">
+   <!-- desktop language select -->
+   <select
+     class="lang-select"
+     (change)="setLang($any($event.target).value)"
+     [value]="selectedLang"
+     aria-label="Language"
+   >
+     <option value="en">{{ 'LANG_EN' | translate }}</option>
+     <option value="sv">{{ 'LANG_SE' | translate }}</option>
+   </select>
+
+
+   <ng-container *ngIf="auth.isLoggedIn(); else guest">
+     <span class="nav-user">
+       {{ 'NAV_HELLO' | translate:{ username: auth.user?.username } }}
+     </span>
+     <button class="btn-link" (click)="logout()">
+       {{ 'NAV_LOGOUT' | translate }}
+     </button>
+   </ng-container>
+
+
+   <ng-template #guest>
+     <div class="auth-links">
+       <a routerLink="/login">{{ 'NAV_LOGIN' | translate }}</a>
+       <a routerLink="/register">{{ 'NAV_REGISTER' | translate }}</a>
+     </div>
+   </ng-template>
+
+
+   <!-- theme toggle desktop -->
+   <button
+     class="theme-toggle"
+     (click)="toggleTheme()"
+     [title]="isDark()
+       ? ('THEME_SWITCH_TO_LIGHT' | translate)
+       : ('THEME_SWITCH_TO_DARK' | translate)"
+   >
+     <span *ngIf="!isDark()">🌙</span>
+     <span *ngIf="isDark()">☀️</span>
+   </button>
+
+
+   <!-- hamburger -->
+   <button class="hamburger" aria-label="menu" (click)="toggleMobile()">
+     <span class="bar"></span>
+     <span class="bar"></span>
+     <span class="bar"></span>
+   </button>
+ </div>
+</nav>
+
+
+<!-- mobile drawer -->
+<div
+ class="mobile-drawer"
+ [class.open]="mobileOpen"
+ (click)="closeMobile()"
+>
+ <div class="mobile-panel" (click)="$event.stopPropagation()">
+   <button class="close-btn" (click)="closeMobile()">✕</button>
+
+
+   <ul class="mobile-menu">
+     <li *ngIf="auth.isLoggedIn()">
+       <a routerLink="/home" (click)="closeMobile()">{{ 'NAV_HOME' | translate }}</a>
+     </li>
+
+
+     <li *ngIf="auth.isLoggedIn()">
+       <a routerLink="/books" (click)="closeMobile()">{{ 'NAV_BOOKS' | translate }}</a>
+     </li>
+
+
+     <li *ngIf="auth.isLoggedIn()">
+       <a routerLink="/citat" (click)="closeMobile()">{{ 'NAV_QUOTES' | translate }}</a>
+     </li>
+
+
+     <li *ngIf="!auth.isLoggedIn()">
+       <a routerLink="/login" (click)="closeMobile()">{{ 'NAV_LOGIN' | translate }}</a>
+     </li>
+
+
+     <li *ngIf="!auth.isLoggedIn()">
+       <a routerLink="/register" (click)="closeMobile()">{{ 'NAV_REGISTER' | translate }}</a>
+     </li>
+
+
+     <li *ngIf="auth.isLoggedIn()">
+       <button (click)="logout(); closeMobile()">
+         {{ 'NAV_LOGOUT' | translate }}
+       </button>
+     </li>
+
+
+     <li class="divider"></li>
+
+
+     <!-- language row -->
+     <li class="menu-row">
+       <span class="menu-icon" aria-hidden="true">🌐</span>
+       <div class="menu-right">
+         <select
+           class="mobile-lang"
+           (change)="setLang($any($event.target).value)"
+           [value]="selectedLang"
+           aria-label="Language"
+         >
+           <option value="en">{{ 'LANG_EN' | translate }}</option>
+           <option value="sv">{{ 'LANG_SE' | translate }}</option>
+         </select>
+       </div>
+     </li>
+
+
+     <!-- theme row -->
+     <li class="menu-row">
+       <span class="menu-label">
+         {{ isDark() ? ('THEME_DARK' | translate) : ('THEME_LIGHT' | translate) }}
+       </span>
+
+
+       <div class="menu-right">
+         <button class="theme-btn svg" (click)="toggleTheme()" aria-label="Toggle theme">
+           <svg *ngIf="!isDark()" width="28" height="28" viewBox="0 0 24 24" fill="none">
+             <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
+           </svg>
+
+
+           <svg *ngIf="isDark()" width="28" height="28" viewBox="0 0 24 24" fill="none">
+             <circle cx="12" cy="12" r="4" fill="currentColor"/>
+             <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"
+               stroke="currentColor"
+               stroke-width="1.2"
+               stroke-linecap="round"
+             />
+           </svg>
+         </button>
+       </div>
+     </li>
+   </ul>
+ </div>
+</div>
+
+
+

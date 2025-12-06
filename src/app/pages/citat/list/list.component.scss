@@ -1,0 +1,54 @@
+.citat-page {
+  max-width: 1200px;
+
+  .search-input {
+    width: 240px;
+  }
+
+  .filter-select {
+    width: 140px;
+  }
+
+  .filter-author {
+    width: 180px;
+  }
+
+  label input[type="date"] {
+    width: 150px;
+  }
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.quote-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  min-height: 160px;
+  transition: .12s;
+}
+.quote-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.quote-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.quote-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}

@@ -1,0 +1,109 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mx-auto">
+
+      <h3 class="mb-4 text-center">{{ 'REGISTER_TITLE' | translate }}</h3>
+
+      <!-- Template-driven form -->
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">
+            {{ 'REGISTER_USERNAME' | translate }}
+          </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            class="form-control"
+            [(ngModel)]="model.username"
+            required
+            [placeholder]="'REGISTER_USERNAME' | translate"
+          />
+          <div class="text-danger small" *ngIf="registerForm.submitted && !model.username">
+            {{ 'LOGIN_USERNAME_REQUIRED' | translate }}
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">
+            {{ 'REGISTER_PASSWORD' | translate }}
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            class="form-control"
+            [(ngModel)]="model.password"
+            required
+            minlength="6"
+            [placeholder]="'REGISTER_PASSWORD' | translate"
+          />
+          <div class="text-danger small" *ngIf="registerForm.submitted && !model.password">
+            {{ 'LOGIN_PASSWORD_REQUIRED' | translate }}
+          </div>
+          <div
+            class="text-danger small"
+            *ngIf="
+              registerForm.submitted &&
+              model.password &&
+              model.password.length < 6
+            "
+          >
+            {{ 'PASSWORD_MIN_LENGTH' | translate }}
+          </div>
+        </div>
+
+        <!-- Confirm password -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">
+            {{ 'REGISTER_CONFIRM_PASSWORD' | translate }}
+          </label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            class="form-control"
+            [(ngModel)]="model.confirmPassword"
+            required
+            [placeholder]="'REGISTER_CONFIRM_PASSWORD' | translate"
+          />
+          <div
+            class="text-danger small"
+            *ngIf="registerForm.submitted && !model.confirmPassword"
+          >
+            {{ 'CONFIRM_PASSWORD_REQUIRED' | translate }}
+          </div>
+          <div
+            class="text-danger small"
+            *ngIf="
+              registerForm.submitted &&
+              !passwordsMatch() &&
+              model.confirmPassword
+            "
+          >
+            {{ 'PASSWORDS_NOT_MATCH' | translate }}
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-success w-100"
+          [disabled]="registerForm.invalid || !passwordsMatch()"
+        >
+          {{ 'REGISTER_BTN' | translate }}
+        </button>
+      </form>
+
+      <p class="account-link mt-3 text-center">
+        {{ 'REGISTER_PROMPT' | translate }}
+        <a routerLink="/login" class="login-link">
+          {{ 'LOGIN_LINK' | translate }}
+        </a>
+      </p>
+
+    </div>
+  </div>
+</div>

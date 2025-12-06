@@ -1,0 +1,137 @@
+{
+ "APP_TITLE": "MyBookshelf",
+ "BRAND": "MyBookshelf",
+
+
+ "NAV_HOME": "Home",
+ "NAV_BOOKS": "Books",
+ "NAV_QUOTES": "My Quotes",
+ "NAV_LOGIN": "Login",
+ "NAV_REGISTER": "Register",
+ "NAV_LOGOUT": "Logout",
+ "NAV_HELLO": "Hi, {{username}}",
+
+
+ "LANG_EN": "English",
+ "LANG_SE": "Svenska",
+
+
+ "THEME_DARK": "Dark",
+ "THEME_LIGHT": "Light",
+ "THEME_SWITCH_TO_LIGHT": "Switch to light",
+ "THEME_SWITCH_TO_DARK": "Switch to dark",
+
+
+ "LOGIN_TITLE": "Login",
+ "LOGIN_USERNAME_REQUIRED": "Username is required.",
+ "LOGIN_PASSWORD_REQUIRED": "Password is required.",
+ "LOGIN_BTN": "Login",
+ "LOGIN_PROMPT": "Don't have an account?",
+ "REGISTER_LINK": "Register",
+ "ALREADY_ACCOUNT": "Already have an account?",
+ "LOGIN_LINK": "Login",
+
+
+ "REGISTER_TITLE": "Register",
+ "REGISTER_BTN": "Register",
+ "PASSWORD_MIN_LENGTH": "Password must be at least 6 characters.",
+ "PASSWORDS_NOT_MATCH": "Passwords do not match.",
+ "REGISTER_PROMPT": "Already have an account?",
+
+
+ "LANDING_HEADLINE": "All your books & quotes in one place",
+ "LANDING_LEAD": "Collect, organise and revisit the lines that moved you. Lightweight, private and delightfully simple.",
+ "LANDING_CTA_START": "Get Started — it's free",
+ "LANDING_CTA_LOGIN": "I already have an account",
+
+
+ "HOME_GREETING_WELCOME": "Welcome to MyBookshelf — your place to store your favorite books and quotes",
+ "HOME_ADD_BOOK": "Add New Book",
+ "HOME_BOOK_LIST": "Book List",
+ "HOME_MY_QUOTES": "My Quotes",
+ "HOME_LATEST_BOOKS": "Latest Books",
+ "HOME_SHOWING_UP_TO": "Showing up to {{count}}",
+
+
+ "BOOKS_TITLE": "Books",
+ "BOOKS_LIBRARY_HINT": "Your library",
+ "BOOKS_REFRESH": "Refresh",
+ "BOOKS_ADD": "Add New",
+ "BOOKS_SEARCH_PLACEHOLDER": "Search title or author",
+ "BOOK_SAVE": "Save",
+ "BOOK_SAVING": "Saving...",
+ "BOOK_CREATING": "Creating...",
+ "BOOKS_LIST": "Book List",
+ "LOADING": "Loading...",
+ "BOOKS_EMPTY": "There are no books in the system yet — try adding a new one.",
+ "BOOKS_VIEW_ALL": "View All Books",
+
+
+ "CITAT_MY_QUOTES": "My Quotes",
+ "CITAT_SEARCH_PLACEHOLDER": "Search quotes...",
+ "CITAT_FILTER_ALL": "All",
+ "CITAT_FILTER_LONG": "Long quotes",
+ "CITAT_FILTER_SHORT": "Short quotes",
+ "CITAT_FILTER_ALL_AUTHORS": "All authors",
+ "CITAT_FROM": "From",
+ "CITAT_TO": "To",
+ "CITAT_RESET": "Reset",
+ "CITAT_ADD_NEW": "Add New",
+ "CITAT_NEW_QUOTE": "New Quote",
+ "CITAT_EDIT_QUOTE": "Edit Quote",
+ "CITAT_SAVE": "Save",
+ "CITAT_SAVING": "Saving...",
+ "CITAT_LOADING": "Loading...",
+
+ "LANDING_PRIVATE": "Private — your data stays with you",
+  "LANDING_LIGHTWEIGHT": "Lightweight — quick to load on any device",
+  "LANDING_BEAUTIFUL": "Beautiful — clean UI for reading & collecting",
+  "LANDING_MADE_WITH_LOVE": "Made with ❤️ · for Book Lovers",
+
+  "ERROR_LOAD_BOOKS": "An error occurred while loading the books.",
+  "BOOKS_FAILED_LOAD": "Failed to load books",
+
+  "NO_BOOKS_FOUND": "No books found. Try adding a new one.",
+  "BTN_REFRESH": "Refresh",
+  "BTN_ADD_NEW": "Add New",
+
+  "QUOTES_FAILED_LOAD": "Failed to load quotes",
+  "QUOTES_NO_MATCHES": "No matching quotes found.",
+
+  "BTN_RESET": "Reset",
+
+
+  "REGISTER_USERNAME": "Username",
+  "REGISTER_PASSWORD": "Password",
+  "REGISTER_CONFIRM_PASSWORD": "Confirm Password",
+
+  "LOGIN_USERNAME": "Username",
+  "LOGIN_PASSWORD": "Password",
+
+  "BOOK_NEW_TITLE": "Add New Book",
+  "BOOK_FIELD_TITLE": "Title",
+  "BOOK_FIELD_AUTHOR": "Author",
+  "BOOK_FIELD_PUBLISHED": "Published",
+
+  "QUOTE_NEW_TITLE": "New Quote",
+  "QUOTE_FIELD_QUOTE": "Quote",
+  "QUOTE_FIELD_BOOK_OPTIONAL": "Book (optional)",
+  "QUOTE_SELECT_BOOK_PLACEHOLDER": "-- Select a book (or leave blank) --",
+  "QUOTE_FIELD_AUTHOR": "Author",
+  "CITAT_AUTHOR_PLACEHOLDER": "Enter author's name",
+
+  "BTN_CANCEL": "Cancel",
+
+  "UNKNOWN_AUTHOR": "Unknown author",
+  "CONFIRM_DELETE_BOOK": "Are you sure you want to delete this book?",
+  "ERROR_DELETE_BOOK": "Unable to delete the book. Please try again.",
+
+  "TABLE_ACTIONS": "Actions",
+  "BTN_EDIT": "Edit",
+  "BTN_DELETE": "Delete",
+
+  "BOOK_FORM_EDIT": "Edit Book"
+
+
+}
+

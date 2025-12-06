@@ -1,0 +1,184 @@
+/* home.component.scss
+   Improved layout + responsive + dark-mode
+*/
+
+/* Color tokens (light mode) */
+:root {
+  --bg: #ffffff;
+  --text: #0f1724;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: rgba(15,23,36,0.06);
+  --primary: #0d6efd;
+  --primary-contrast: #ffffff;
+  --outline: rgba(15,23,36,0.06);
+  --surface-muted: #f8fafc;
+}
+
+/* General resets + transitions */
+* { box-sizing: border-box; }
+.home-hero {
+  min-height: 60vh;
+  padding: 2.25rem 0;
+  color: var(--text);
+  transition: background-color .18s ease, color .18s ease;
+
+  .greeting {
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.15rem;
+      line-height: 1.05;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    .btn-toggle-theme {
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.6rem;
+      color: inherit;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color .12s ease, color .12s ease;
+
+      &:hover { background: var(--surface-muted); }
+
+      i { pointer-events: none; } /* icon shouldn't capture hover */
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
+
+/* Book card style */
+.book-card {
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(16,24,40,0.08);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .card-title { margin-bottom: 0.25rem; }
+  .card-text { margin-bottom: 0; }
+}
+
+/* Utilities */
+.text-muted { color: var(--muted); }
+
+.btn-outline-primary {
+  color: var(--primary);
+  border: 1px solid rgba(13,110,253,0.15);
+  background: transparent;
+}
+
+/* Small card meta */
+.book-meta {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* Responsive tweaks */
+@media (max-width: 575.98px) {
+  .home-hero {
+    padding: 1.25rem 0;
+    .greeting h1 { font-size: 1.4rem; }
+    .actions { width: 100%; justify-content: flex-start; gap: 0.5rem; flex-wrap: wrap; }
+  }
+}
+
+/* Accessibility focus outlines */
+button:focus, .btn:focus, a:focus {
+  outline: 3px solid rgba(13,110,253,0.18);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Dark mode overrides (toggle by adding class 'app-dark-mode' to body) */
+body.app-dark-mode {
+  --bg: #0b1220;
+  --text: #e6eef8;
+  --muted: #9fb6d6;
+  --card-bg: #0f1824;
+  --card-border: rgba(255,255,255,0.04);
+  --primary: #60a5fa;
+  --primary-contrast: #071124;
+  --outline: rgba(255,255,255,0.04);
+  --surface-muted: rgba(255,255,255,0.02);
+
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Additional dark mode tweaks for specific elements (use var tokens) */
+body.app-dark-mode {
+  .home-hero {
+    .actions .btn-toggle-theme:hover { background: rgba(255,255,255,0.02); }
+    .greeting p { color: var(--muted); }
+  }
+
+  .book-card {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+
+    &:hover {
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    .card-body { color: var(--text); }
+  }
+
+  .btn-outline-secondary,
+  .btn-outline-primary,
+  .btn-outline-danger,
+  .btn-outline-info {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.06);
+    background: transparent;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-contrast);
+    border-color: var(--primary);
+  }
+
+  .alert-info {
+    background-color: rgba(255,255,255,0.02);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+}
+
+/* Small helpers */
+.mt-1 { margin-top: .25rem; }
+.mb-1 { margin-bottom: .25rem; }
+.p-1 { padding: .5rem; }

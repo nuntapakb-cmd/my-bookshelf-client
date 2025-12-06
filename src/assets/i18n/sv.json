@@ -1,0 +1,136 @@
+{
+ "APP_TITLE": "MyBookshelf",
+ "BRAND": "MyBookshelf",
+
+
+ "NAV_HOME": "Hem",
+ "NAV_BOOKS": "Böcker",
+ "NAV_QUOTES": "Mina citat",
+ "NAV_LOGIN": "Logga in",
+ "NAV_REGISTER": "Registrera",
+ "NAV_LOGOUT": "Logga ut",
+ "NAV_HELLO": "Hej, {{username}}",
+
+
+ "LANG_EN": "Engelska",
+ "LANG_SE": "Svenska",
+
+
+ "THEME_DARK": "Mörkt läge",
+ "THEME_LIGHT": "Ljust läge",
+ "THEME_SWITCH_TO_LIGHT": "Byt till ljust läge",
+ "THEME_SWITCH_TO_DARK": "Byt till mörkt läge",
+
+
+ "LOGIN_TITLE": "Logga in",
+ "LOGIN_USERNAME_REQUIRED": "Användarnamn krävs.",
+ "LOGIN_PASSWORD_REQUIRED": "Lösenord krävs.",
+ "LOGIN_BTN": "Logga in",
+ "LOGIN_PROMPT": "Har du inget konto?",
+ "REGISTER_LINK": "Registrera",
+ "ALREADY_ACCOUNT": "Har du redan ett konto?",
+ "LOGIN_LINK": "Logga in",
+
+
+ "REGISTER_TITLE": "Registrera",
+ "REGISTER_BTN": "Registrera",
+ "PASSWORD_MIN_LENGTH": "Lösenordet måste vara minst 6 tecken.",
+ "PASSWORDS_NOT_MATCH": "Lösenorden matchar inte.",
+ "REGISTER_PROMPT": "Har du redan ett konto?",
+
+
+ "LANDING_HEADLINE": "Alla dina böcker och citat på ett ställe",
+ "LANDING_LEAD": "Samla, organisera och återbesök rader som berört dig. Lätt, privat och härligt enkelt.",
+ "LANDING_CTA_START": "Kom igång — det är gratis",
+ "LANDING_CTA_LOGIN": "Jag har redan ett konto",
+
+
+ "HOME_GREETING_WELCOME": "Välkommen till MyBookshelf — din plats för att spara favoritböcker och citat",
+ "HOME_ADD_BOOK": "Lägg till ny bok",
+ "HOME_BOOK_LIST": "Boklista",
+ "HOME_MY_QUOTES": "Mina citat",
+ "HOME_LATEST_BOOKS": "Senaste böckerna",
+ "HOME_SHOWING_UP_TO": "Visar upp till {{count}}",
+
+
+ "BOOKS_TITLE": "Böcker",
+ "BOOKS_LIBRARY_HINT": "Ditt bibliotek",
+ "BOOKS_REFRESH": "Uppdatera",
+ "BOOKS_ADD": "Lägg till ny",
+ "BOOKS_SEARCH_PLACEHOLDER": "Sök titel eller författare",
+ "BOOK_SAVE": "Spara",
+ "BOOK_SAVING": "Sparar...",
+ "BOOK_CREATING": "Skapar...",
+ "BOOKS_LIST": "Boklista",
+ "LOADING": "Laddar...",
+ "BOOKS_EMPTY": "Det finns inga böcker i systemet än — försök lägga till en ny.",
+ "BOOKS_VIEW_ALL": "Visa alla böcker",
+
+
+ "CITAT_MY_QUOTES": "Mina citat",
+ "CITAT_SEARCH_PLACEHOLDER": "Sök citat...",
+ "CITAT_FILTER_ALL": "Alla",
+ "CITAT_FILTER_LONG": "Långa citat",
+ "CITAT_FILTER_SHORT": "Korta citat",
+ "CITAT_FILTER_ALL_AUTHORS": "Alla författare",
+ "CITAT_FROM": "Från",
+ "CITAT_TO": "Till",
+ "CITAT_RESET": "Återställ",
+ "CITAT_ADD_NEW": "Lägg till ny",
+ "CITAT_NEW_QUOTE": "Nytt citat",
+ "CITAT_EDIT_QUOTE": "Redigera citat",
+ "CITAT_SAVE": "Spara",
+ "CITAT_SAVING": "Sparar...",
+ "CITAT_LOADING": "Laddar...",
+
+ "LANDING_PRIVATE": "Privat — dina data stannar hos dig",
+  "LANDING_LIGHTWEIGHT": "Lättviktigt — laddar snabbt på alla enheter",
+  "LANDING_BEAUTIFUL": "Vackert — ren UI för läsning och samling",
+  "LANDING_MADE_WITH_LOVE": "Gjord med ❤️ · för bokälskare",
+
+  "ERROR_LOAD_BOOKS": "Ett fel uppstod när böckerna laddades.",
+  "BOOKS_FAILED_LOAD": "Misslyckades att ladda böcker",
+
+  "NO_BOOKS_FOUND": "Inga böcker hittades. Försök att lägga till en ny.",
+  "BTN_REFRESH": "Uppdatera",
+  "BTN_ADD_NEW": "Lägg till ny",
+
+  "QUOTES_FAILED_LOAD": "Misslyckades att ladda citat",
+  "QUOTES_NO_MATCHES": "Inga matchande citat hittades.",
+
+  "BTN_RESET": "Återställ",
+
+  "REGISTER_USERNAME": "Användarnamn",
+  "REGISTER_PASSWORD": "Lösenord",
+  "REGISTER_CONFIRM_PASSWORD": "Bekräfta lösenord",
+
+  "LOGIN_USERNAME": "Användarnamn",
+  "LOGIN_PASSWORD": "Lösenord",
+
+  "BOOK_NEW_TITLE": "Lägg till ny bok",
+  "BOOK_FIELD_TITLE": "Titel",
+  "BOOK_FIELD_AUTHOR": "Författare",
+  "BOOK_FIELD_PUBLISHED": "Utgiven",
+
+  "QUOTE_NEW_TITLE": "Nytt citat",
+  "QUOTE_FIELD_QUOTE": "Citat",
+  "QUOTE_FIELD_BOOK_OPTIONAL": "Bok (valfritt)",
+  "QUOTE_SELECT_BOOK_PLACEHOLDER": "-- Välj en bok (eller lämna tomt) --",
+  "QUOTE_FIELD_AUTHOR": "Författare",
+  "CITAT_AUTHOR_PLACEHOLDER": "Ange författarens namn",
+
+  "BTN_CANCEL": "Avbryt",
+
+  "UNKNOWN_AUTHOR": "Okänd författare",
+  "CONFIRM_DELETE_BOOK": "Är du säker på att du vill radera den här boken?",
+  "ERROR_DELETE_BOOK": "Det gick inte att radera boken. Försök igen.",
+
+  "TABLE_ACTIONS": "Åtgärder",
+  "BTN_EDIT": "Redigera",
+  "BTN_DELETE": "Radera",
+
+  "BOOK_FORM_EDIT": "Redigera bok"
+
+  
+}
+

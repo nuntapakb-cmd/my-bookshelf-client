@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mx-auto">
+
+      <h3 class="mb-4 text-center">{{ 'LOGIN_TITLE' | translate }}</h3>
+
+      <!-- ngForm -->
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label>{{ 'LOGIN_USERNAME' | translate }}</label>
+
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="model.username"
+            required
+          />
+          <!-- Error -->
+          <div class="text-danger small" *ngIf="loginForm.submitted && !model.username">
+            Username is required.
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+         <label>{{ 'LOGIN_PASSWORD' | translate }}</label>
+
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="model.password"
+            required
+          />
+          <div class="text-danger small" *ngIf="loginForm.submitted && !model.password">
+            Password is required.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+  {{ 'LOGIN_BTN' | translate }}
+</button>
+
+      </form>
+
+      <!-- Optional: Link to Register -->
+      <div class="text-center mt-3">
+          {{ 'LOGIN_PROMPT' | translate }}
+            <a routerLink="/register">
+          {{ 'REGISTER_LINK' | translate }}
+  </a>
+
+    </div>
+  </div>
+</div>

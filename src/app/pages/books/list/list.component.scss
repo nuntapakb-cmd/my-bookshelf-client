@@ -1,0 +1,55 @@
+:host { display: block; }
+
+/* Make the table container background white (as before) */
+.table-responsive {
+  background: #fff;
+}
+
+/* ======= Overrides to make the buttons in the table more visible ======= */
+
+/* ทำให้ปุ่มภายใน table-responsive มีความชัดเจนเสมอ */
+.table-responsive .btn {
+  opacity: 1 !important;               
+  color: inherit !important;            
+  border-width: 1px !important;
+  box-shadow: none;
+  pointer-events: auto;                
+}
+
+/* Make btn-outline-primary and btn-outline-danger stand out on a white background */
+.table-responsive .btn.btn-outline-primary {
+  color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  background: transparent !important;
+}
+
+.table-responsive .btn.btn-outline-danger {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  background: transparent !important;
+}
+
+/* Make the icons inside the button clearly visible (some themes set icons to be transparent) */
+.table-responsive .btn i,
+.table-responsive .btn svg {
+  color: inherit !important;
+  opacity: 1 !important;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+/* Slightly adjust spacing for small buttons */
+.table-responsive .btn.btn-sm {
+  padding: .25rem .5rem;
+}
+
+/* Vertically center the cells for better appearance */
+.table-responsive td,
+.table-responsive th {
+  vertical-align: middle;
+}
+
+/* Hide the table on mobile (cards will be shown instead) */
+@media (max-width: 767px) {
+  .table-responsive { display: none; }
+}

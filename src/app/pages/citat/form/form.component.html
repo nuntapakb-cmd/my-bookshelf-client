@@ -1,0 +1,85 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <!-- Form heading -->
+          <h3 class="mb-4">
+            {{ 'QUOTE_NEW_TITLE' | translate }}
+          </h3>
+
+          <!-- Use save() instead of onSubmit() -->
+          <form #quoteForm="ngForm" (ngSubmit)="save()">
+
+            <!-- Quote -->
+            <div class="mb-3">
+              <label class="form-label">
+                {{ 'QUOTE_FIELD_QUOTE' | translate }}
+              </label>
+              <textarea
+                class="form-control"
+                rows="5"
+                name="text"
+                [(ngModel)]="model.text"
+                required
+              ></textarea>
+            </div>
+
+            <div class="row">
+              <!-- Book (optional) -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label">
+                  {{ 'QUOTE_FIELD_BOOK_OPTIONAL' | translate }}
+                </label>
+                <select
+                  class="form-select"
+                  name="bookId"
+                  [(ngModel)]="model.bookId"
+                  (ngModelChange)="onBookChange($event)"
+                >
+                  <option [ngValue]="null">
+                    {{ 'QUOTE_SELECT_BOOK_PLACEHOLDER' | translate }}
+                  </option>
+                  <option *ngFor="let b of books" [ngValue]="b.id">
+                    {{ b.title }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Author -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label">
+                  {{ 'QUOTE_FIELD_AUTHOR' | translate }}
+                </label>
+                <input
+                  class="form-control"
+                  name="author"
+                  [(ngModel)]="model.author"
+                  [placeholder]="'CITAT_AUTHOR_PLACEHOLDER' | translate"
+                  list="authorSuggestions"
+                />
+                <!-- datalist for suggestions -->
+                <datalist id="authorSuggestions">
+                  <option *ngFor="let a of authors" [value]="a"></option>
+                </datalist>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary" [disabled]="saving">
+                {{ 'CITAT_SAVE' | translate }}
+              </button>
+              
+              <button type="button" class="btn btn-secondary" (click)="cancel()">
+                {{ 'BTN_CANCEL' | translate }}
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

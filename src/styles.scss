@@ -1,1 +1,207 @@
-/* You can add global styles to this file, and also import other style files */
+/* global dark-mode overrides (put in styles.scss or theme scss) */
+:root {
+  --page-bg: #fafafa;
+  --nav-bg: #fff;
+  --nav-text: #111;
+  --muted: #6c757d;
+  --card-bg: #fff;
+  --card-border: rgba(0,0,0,0.08);
+  --link-color: #0d6efd;
+  --btn-primary-bg: #0d6efd;
+  --btn-outline-bg: transparent;
+}
+
+/* dark theme variables */
+.dark-theme, body.app-dark-mode {
+  --page-bg: #0f1720;         /* page background */
+  --nav-bg: #071026;          /* navbar slightly lighter */
+  --nav-text: #e6eef6;        /* navbar text */
+  --muted: rgba(230,238,246,0.45); /* muted text */
+  --card-bg: rgba(255,255,255,0.02); /* translucent cards */
+  --card-border: rgba(255,255,255,0.04);
+  --link-color: #4fb3ff;
+  --btn-primary-bg: #1e88ff;
+  --btn-outline-bg: rgba(255,255,255,0.02);
+}
+
+/* body background + base text */
+body {
+  background: var(--page-bg) !important;
+  color: var(--nav-text) !important;
+}
+
+/* navbar */
+.app-navbar {
+  background: var(--nav-bg) !important;
+  color: var(--nav-text) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* headings consistent */
+h1, h2, h3, h4, h5 {
+  color: var(--nav-text);
+}
+
+/* muted text */
+.text-muted {
+  color: var(--muted) !important;
+}
+
+/* links */
+a, .btn-link {
+  color: var(--link-color) !important;
+}
+
+/* cards (books / quotes) */
+.card, .book-card, .quote-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--nav-text);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* card title and text */
+.card .card-title,
+.quote-card .quote-text {
+  color: var(--nav-text);
+}
+
+/* small extra muted meta in cards */
+.card .text-muted,
+.quote-meta small {
+  color: var(--muted) !important;
+}
+
+/* buttons */
+.btn-primary {
+  background: var(--btn-primary-bg) !important;
+  border-color: rgba(0,0,0,0.12);
+  color: #fff !important;
+}
+.btn-outline-secondary, .btn-outline-info, .btn-outline-primary {
+  background: var(--btn-outline-bg) !important;
+  color: var(--nav-text) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* icon button styles (edit/delete) keep visible */
+.btn-outline-danger, .btn-outline-primary {
+  background: transparent !important;
+  color: var(--nav-text) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* inputs / selects / datalist */
+input.form-control, textarea.form-control, select.form-select, .form-control {
+  background: rgba(255,255,255,0.02) !important;
+  color: var(--nav-text) !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+}
+
+/* page title spacing similar to My Quotes */
+.page-title, .greeting h1 {
+  color: var(--nav-text);
+}
+
+/* ensure placeholders are subtle */
+::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+/* small responsive fix: keep cards readable */
+@media (min-width: 768px) {
+  .quote-card, .book-card {
+    min-height: 120px;
+  }
+}
+
+/* Fix: Make form controls visible across pages (login / register / forms) */
+/* Paste into src/styles.scss (end of file) */
+
+:root {
+  --form-bg: #ffffff;             /* default form background (light mode) */
+  --form-border: #e6e9ef;         /* light border */
+  --form-text: #111827;           /* input text color */
+  --form-placeholder: #98a0ac;    /* placeholder */
+  --form-focus-shadow: 0 6px 18px rgba(13, 110, 253, 0.12);
+}
+
+/* dark theme variants (applies when .dark-theme or body.app-dark-mode exists) */
+.dark-theme, body.app-dark-mode {
+  --form-bg: rgba(255,255,255,0.03);
+  --form-border: rgba(255,255,255,0.06);
+  --form-text: rgba(230,238,246,0.92);
+  --form-placeholder: rgba(255,255,255,0.45);
+  --form-focus-shadow: 0 6px 18px rgba(79,179,255,0.12);
+}
+
+/* Generic form control reset/visibility */
+input.form-control,
+textarea.form-control,
+select.form-select,
+.form-control {
+  background: var(--form-bg) !important;
+  color: var(--form-text) !important;
+  border: 1px solid var(--form-border) !important;
+  border-radius: 8px !important;
+  padding: 0.56rem 0.9rem !important; /* comfortable touch size */
+  box-shadow: none !important;
+  transition: box-shadow .14s ease, border-color .12s ease;
+  /* keep native appearance but clearer */
+}
+
+/* placeholder */
+input.form-control::placeholder,
+textarea.form-control::placeholder {
+  color: var(--form-placeholder) !important;
+  opacity: 1;
+}
+
+/* focus state - subtle highlight */
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-select:focus {
+  outline: none !important;
+  border-color: color-mix(in srgb, var(--form-border) 30%, var(--form-text) 70%) !important;
+  box-shadow: var(--form-focus-shadow) !important;
+  background: color-mix(in srgb, var(--form-bg) 92%, white 8%) !important;
+}
+
+/* disabled / readonly */
+input.form-control[disabled],
+textarea.form-control[disabled],
+select.form-select[disabled],
+input.form-control[readonly],
+textarea.form-control[readonly] {
+  opacity: 0.9;
+  cursor: not-allowed;
+}
+
+/* small tweak for full-width forms (login/register layout) */
+.form-row .form-control,
+.form-group .form-control {
+  width: 100%;
+  display: block;
+}
+
+/* ensure selects that use [value]=undefined still show placeholder visually */
+select.form-select option[value="undefined"],
+select.form-select option[value=""] {
+  color: var(--form-placeholder);
+}
+
+/* small responsive tweak */
+@media (max-width: 520px) {
+  input.form-control, textarea.form-control, select.form-select {
+    padding: 0.72rem 0.9rem !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Fix: Prevent fixed navbar from covering page content                       */
+/* -------------------------------------------------------------------------- */
+
+body {
+  padding-top: 64px !important; /* Prevent the fixed navbar from covering the content */
+  transition: background-color .15s, color .15s;
+}

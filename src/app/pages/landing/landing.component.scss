@@ -1,0 +1,336 @@
+/* src/app/pages/landing/landing.component.scss */
+
+/* =============
+   Variables
+   ============= */
+:root {
+  --bg: #f6f7fb;
+  --card-bg: #ffffff;
+  --accent-1: #5b6cff;
+  --accent-2: #7ad3ff;
+  --muted: #6b7280;
+  --radius: 16px;
+  --gap: 24px;
+  --shadow-1: 0 8px 40px rgba(21, 24, 40, 0.06);
+}
+
+/* dark theme variables (applies if .dark-theme on <html> or body.app-dark-mode) */
+.dark-theme, body.app-dark-mode {
+  --bg: #071425;
+  --card-bg: rgba(255,255,255,0.03);
+  --accent-1: #4fb3ff;
+  --accent-2: #6ad6ff;
+  --muted: rgba(255,255,255,0.6);
+  --shadow-1: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* =============
+   Layout
+   ============= */
+.landing-root {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 90%, white 10%) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  color: var(--muted);
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* small top nav placeholder */
+.nav-placeholder {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 28px;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* hero card */
+.hero {
+  display: flex;
+  justify-content: center;
+}
+.hero-card {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: var(--gap);
+  background: linear-gradient(180deg, var(--card-bg), color-mix(in srgb, var(--card-bg), black 2%));
+  border-radius: 18px;
+  padding: 36px;
+  box-shadow: var(--shadow-1);
+  align-items: center;
+}
+
+/* left column */
+.hero-left {
+  padding-right: 12px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.brand-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  color: white;
+  box-shadow: 0 8px 20px rgba(95, 90, 230, 0.12);
+}
+
+.brand-name {
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent-1) 80%, black 20%);
+}
+
+/* headline + lead */
+.headline {
+  margin: 6px 0 10px 0;
+  font-size: 28px;
+  line-height: 1.06;
+  color: color-mix(in srgb, var(--accent-1) 30%, black 60%);
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  letter-spacing: -0.2px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+/* CTA row */
+.cta-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.btn {
+  padding: 11px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Primary filled */
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 8px 26px rgba(59, 65, 255, 0.14);
+  border: none;
+}
+
+/* Ghost */
+.btn.ghost {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent 60%);
+  color: var(--muted);
+}
+
+/* features */
+.features {
+  margin-top: 14px;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.features li strong { color: color-mix(in srgb, var(--accent-1) 60%, black 10%); }
+
+/* right column illustration */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.illustration {
+  width: 360px;
+  height: 260px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* soft layered cards */
+.illus-card {
+  position: absolute;
+  width: 220px;
+  height: 150px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(15,22,40,0.06);
+  overflow: hidden;
+  transform-origin: center;
+}
+.card1 {
+  left: -16px;
+  top: -10px;
+  transform: rotate(-8deg) scale(0.98);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent-1) 18%, white 50%), transparent);
+  opacity: 0.95;
+}
+.card2 {
+  right: -10px;
+  top: 10px;
+  transform: rotate(6deg);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 15%, white 50%), transparent);
+  opacity: 0.98;
+}
+.card3 {
+  width: 240px;
+  height: 170px;
+  transform: rotate(-2deg);
+  box-shadow: 0 26px 60px rgba(21,24,40,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #eee;
+}
+.card3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* small footer */
+.small-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* =============
+   Responsive
+   ============= */
+/* Tablet / smaller screens */
+@media (max-width: 980px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 28px;
+  }
+
+  /* Move the image to the top */
+  .hero-right {
+    order: -1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  /* Adjust the image frame size for small screens */
+  .illustration {
+    width: 100%;
+    max-width: 320px;
+    height: 210px;
+  }
+
+  /* Hide only the decorative cards 1–2 but keep the card with an image (card3) visible */
+  .card1,
+  .card2 {
+    display: none;
+  }
+
+  .card3 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: none;         
+    box-shadow: 0 20px 40px rgba(21,24,40,0.16);
+  }
+
+  .headline {
+    font-size: 22px;
+  }
+
+  /* Center the text and buttons on small screens */
+  .hero-left,
+  .headline,
+  .lead,
+  .features {
+    text-align: center;
+  }
+
+  .features {
+    justify-items: center;
+  }
+
+  .cta-row {
+    justify-content: center;
+  }
+}
+
+/* Very small mobile devices */
+@media (max-width: 520px) {
+  .headline { font-size: 20px; }
+  .lead { font-size: 14px; }
+
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .headline { font-size: 20px; }
+  .lead { font-size: 14px; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .btn { width: 100%; justify-content: center; }
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Logo size in the landing card */
+.landing-logo {
+  width: 48px;     
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Brand name text next to the logo */
+.brand-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.landing-logo {
+  width: 45px; 
+  height: auto;
+}

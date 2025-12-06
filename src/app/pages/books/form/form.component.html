@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mx-auto">
+
+      <!-- Edit page title-->
+      <h3 class="mb-4 text-center">
+        {{ 'BOOK_FORM_EDIT' | translate }}
+      </h3>
+
+      <form #bookForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">
+            {{ 'BOOK_FIELD_TITLE' | translate }}
+          </label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            class="form-control"
+            [(ngModel)]="model.title"
+            required
+            [placeholder]="'BOOK_FIELD_TITLE' | translate"
+          />
+        </div>
+
+        <!-- Author -->
+        <div class="mb-3">
+          <label for="author" class="form-label">
+            {{ 'BOOK_FIELD_AUTHOR' | translate }}
+          </label>
+          <input
+            id="author"
+            name="author"
+            type="text"
+            class="form-control"
+            [(ngModel)]="model.author"
+            [placeholder]="'BOOK_FIELD_AUTHOR' | translate"
+          />
+        </div>
+
+        <!-- Published -->
+        <div class="mb-3">
+          <label for="publishedDate" class="form-label">
+            {{ 'BOOK_FIELD_PUBLISHED' | translate }}
+          </label>
+          <input
+            id="publishedDate"
+            name="publishedDate"
+            type="date"
+            class="form-control"
+            [(ngModel)]="model.publishedDate"
+          />
+        </div>
+
+        <!-- Save button -->
+        <button type="submit" class="btn btn-primary w-100">
+          {{ 'BOOK_SAVE' | translate }}
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

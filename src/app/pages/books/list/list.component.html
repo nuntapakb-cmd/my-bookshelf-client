@@ -1,0 +1,95 @@
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="m-0">{{ 'BOOKS_TITLE' | translate }}</h2>
+      <small class="text-muted d-block">{{ 'BOOKS_LIBRARY_HINT' | translate }}</small>
+    </div>
+
+    <div class="d-flex gap-2 align-items-center">
+      <input class="form-control" style="min-width:220px" placeholder="{{ 'BOOKS_SEARCH_PLACEHOLDER' | translate }}" [(ngModel)]="search" (ngModelChange)="applyFilter()" />
+      <button class="btn btn-outline-secondary" (click)="load()" [disabled]="loading">
+  <i class="fa fa-sync-alt me-1"></i>
+  {{ 'BOOKS_REFRESH' | translate }}
+      </button>
+
+      <button class="btn btn-primary" (click)="onAdd()">
+          <i class="fa fa-plus me-1"></i>
+          {{ 'BOOKS_ADD' | translate }}
+      </button>
+    </div>
+  </div>
+
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!loading && filtered.length === 0" class="text-center text-muted py-5">
+  {{ 'NO_BOOKS_FOUND' | translate }}
+  </div>
+
+
+  <!-- Table for md+ -->
+  <div class="table-responsive shadow-sm rounded" *ngIf="filtered.length > 0">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+  <tr>
+    <th style="width: 5%;">#</th>
+    <th>{{ 'BOOK_FIELD_TITLE' | translate }}</th>
+    <th style="width: 25%;">{{ 'BOOK_FIELD_AUTHOR' | translate }}</th>
+    <th style="width: 15%;">{{ 'BOOK_FIELD_PUBLISHED' | translate }}</th>
+    <th style="width: 15%;">{{ 'TABLE_ACTIONS' | translate }}</th>
+  </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of filtered; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ b.title }}</td>
+          <td>{{ b.author }}</td>
+          <td>
+            <ng-container *ngIf="b.publishedDate; else dash">
+              {{ b.publishedDate | date:'mediumDate' }}
+            </ng-container>
+            <ng-template #dash>-</ng-template>
+          </td>
+          <td>
+            <div class="d-flex gap-2">
+ <button class="btn btn-outline-primary" (click)="onEdit(b)">
+      <i class="fa fa-edit me-1"></i>
+      {{ 'BTN_EDIT' | translate }}
+    </button>
+
+    <button class="btn btn-outline-danger" (click)="onDelete(b)">
+      <i class="fa fa-trash"></i>
+      {{ 'BTN_DELETE' | translate }}
+    </button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile cards -->
+  <div class="row g-3 mt-3 d-md-none">
+    <div class="col-12" *ngFor="let b of filtered">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-1">{{ b.title }}</h5>
+          <p class="card-text text-muted mb-2">{{ b.author }}</p>
+          <p class="mb-2 small"><strong>Published:</strong>
+            <span *ngIf="b.publishedDate; else none">{{ b.publishedDate | date:'mediumDate' }}</span>
+            <ng-template #none>-</ng-template>
+          </p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-primary" (click)="onEdit(b)">Edit</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="onDelete(b)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
