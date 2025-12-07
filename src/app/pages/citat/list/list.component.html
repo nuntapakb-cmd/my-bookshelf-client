@@ -70,6 +70,12 @@
 
   <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
+   <!-- Failed to load quotes -->
+<div *ngIf="!!error" class="alert alert-danger">
+  {{ 'QUOTES_FAILED_LOAD' | translate }}
+</div>
+
+
   <!-- No matching quotes found -->
   <div *ngIf="!loading && filteredQuotes.length === 0" class="alert alert-info">
     {{ 'QUOTES_NO_MATCHES' | translate }}
