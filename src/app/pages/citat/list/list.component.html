@@ -68,8 +68,6 @@
     <div class="spinner-border"></div>
   </div>
 
-  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-
    <!-- Failed to load quotes -->
 <div *ngIf="!!error" class="alert alert-danger">
   {{ 'QUOTES_FAILED_LOAD' | translate }}
