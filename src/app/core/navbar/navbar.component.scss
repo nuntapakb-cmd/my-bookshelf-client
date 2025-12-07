@@ -1,342 +1,358 @@
 /* navbar.component.scss */
 
-
 /* Default variables as fallback */
 :root {
- --nav-bg: #ffffff;
- --nav-text: #111111;
- --page-bg: #fafafa;
- --muted: #6b7280;    /* added default muted color */
+  --nav-bg: #ffffff;
+  --nav-text: #111111;
+  --page-bg: #fafafa;
+  --muted: #6b7280;
 }
 
-
-/* Dark theme variables */
 .dark-theme {
- --nav-bg: #0b1220;   /* dark navbar */
- --nav-text: #f3f6f9; /* light text */
- --page-bg: #071425;
- --muted: rgba(255,255,255,0.6);
+  --nav-bg: #0b1220;
+  --nav-text: #f3f6f9;
+  --page-bg: #071425;
+  --muted: rgba(255,255,255,0.6);
 }
-
 
 /* navbar container */
 .app-navbar {
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: 64px;
- display: flex;
- align-items: center;
- justify-content: space-between;
- padding: 8px 20px;
- background: var(--nav-bg);
- color: var(--nav-text);
- z-index: 1200;
- border-bottom: 1px solid rgba(0,0,0,0.06);
-}
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  z-index: 1200;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 
+  /* allow children to wrap on small screens */
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
 /* left side */
 .nav-left {
- display: flex;
- gap: 14px;
- align-items: center;
+  display: flex;
+  gap: 14px;
+  align-items: center;
 }
-
 
 /* brand */
 .brand {
- display: flex;
- align-items: center;
- gap: 10px;
- font-weight: 700;
- color: var(--nav-text);
- text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--nav-text);
+  text-decoration: none;
 }
-.site-logo { width: 32px; height: 32px; }
 
+/* logo */
+/* >>> default <<< */
+.site-logo {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
 
-/* right */
+/* right side */
 .nav-right {
- display:flex;
- gap:12px;
- align-items:center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
+/* wrapper for user/auth links */
+.auth-links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.nav-user {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-right: 4px;
+
+  /* prevent overflow pushing layout */
+  max-width: 160px;
+  white-space: normal;     /* allow wrapping to next line */
+  word-break: break-word;  /* break long words/emails */
+  overflow: hidden;
+}
+
+/* small fallback for a long single token (like email) */
+.nav-user span {
+  display: inline-block;
+  max-width: 100%;
+}
 
 /* links/buttons */
-a, .nav-user, .btn-link {
- color: var(--nav-text);
+a,
+.nav-user,
+.btn-link {
+  color: var(--nav-text);
 }
-
 
 /* logout / link button style */
 .btn-link {
- background: transparent;
- border: none;
- cursor: pointer;
- padding: 6px 10px;
- color: var(--nav-text) !important;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  color: var(--nav-text) !important;
 }
-
 
 /* hover */
-a:hover, .btn-link:hover {
- opacity: 0.85;
+a:hover,
+.btn-link:hover {
+  opacity: 0.85;
 }
-
 
 /* theme toggle (desktop) */
 .theme-toggle {
- border: none;
- background: transparent;
- cursor: pointer;
- font-size: 18px;
- padding: 6px;
- border-radius: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px;
+  border-radius: 6px;
 }
 
-
-/* language select (desktop) */
-.lang-select {
- padding: 6px 8px;
- border-radius: 6px;
- border: 1px solid rgba(0,0,0,0.08);
- background: transparent;
- color: var(--nav-text);
+/* language select + mobile language */
+.lang-select,
+.mobile-lang {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: transparent;
+  color: var(--nav-text);
 }
-
 
 /* hamburger - default hidden on desktop */
 .hamburger {
- display: inline-flex;
- flex-direction: column;
- justify-content: center;
- gap: 5px;              
- width: 40px;
- height: 36px;
- border: none;
- background: transparent;
- cursor: pointer;
- padding: 6px;
+  display: none; /* hidden by default, shown on small screens below */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
 }
-
 
 .hamburger .bar {
- width: 22px;
- height: 3px;           
- background: var(--nav-text);
- border-radius: 3px;     
- transition: 0.2s ease;
+  width: 22px;
+  height: 3px;
+  background: var(--nav-text);
+  border-radius: 3px;
+  transition: 0.2s ease;
 }
-
-
-
 
 /* mobile drawer background overlay */
 .mobile-drawer {
- position: fixed;
- inset: 0;
- background: rgba(0,0,0,0.45);
- display: none;
- z-index: 1300;
- /* keep pointer-events none when closed (optional) */
- pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  z-index: 1300;
+  pointer-events: auto;
 }
 
-
-/* show overlay when open */
-.mobile-drawer.open { display: block; }
-
+.mobile-drawer.open {
+  display: block;
+}
 
 /* sliding panel */
 .mobile-panel {
- width: 300px;
- max-width: 85%;
- height: 100%;
- background: var(--nav-bg);
- color: var(--nav-text);
- padding: 18px;
- box-shadow: 0 8px 30px rgba(0,0,0,0.3);
- transform: translateX(-8px);
- /* animate panel from left */
- animation: slideIn .22s ease-out forwards;
+  width: 300px;
+  max-width: 85%;
+  height: 100%;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  transform: translateX(-8px);
+  animation: slideIn 0.22s ease-out forwards;
 }
-
 
 /* slide in keyframes */
 @keyframes slideIn {
- from { transform: translateX(-100%); opacity: 0; }
- to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-
 
 .mobile-panel .close-btn {
- background: transparent;
- border: none;
- font-size: 22px;
- color: var(--nav-text);
- float: right;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: var(--nav-text);
+  float: right;
 }
-
 
 /* mobile menu items */
-.mobile-menu { list-style:none; padding:18px 0; margin: 0; }
-.mobile-menu li { margin: 12px 0; }
-.mobile-menu li.divider { border-top: 1px solid rgba(0,0,0,0.08); margin-top: 10px; padding-top: 12px; }
+.mobile-menu {
+  list-style: none;
+  padding: 18px 0;
+  margin: 0;
+}
 
+.mobile-menu li {
+  margin: 12px 0;
+}
 
-/* layout for a menu row inside drawer */
+.mobile-menu li.divider {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 10px;
+  padding-top: 12px;
+}
+
 .menu-row {
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding: 12px 6px;
- gap: 12px;
- border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 6px;
+  gap: 12px;
+  border-radius: 8px;
 }
 
-
-/* left label (Dark / Light) */
 .menu-label {
- font-size:18px;
- color: var(--muted);
+  font-size: 18px;
+  color: var(--muted);
 }
 
-
-/* menu icon (globe) */
 .menu-icon {
- font-size: 20px;
- color: var(--muted);
- margin-right: 8px;
+  font-size: 20px;
+  color: var(--muted);
+  margin-right: 8px;
 }
 
-
-/* right-side container inside a menu row (select or icon) */
 .menu-right {
- display:flex;
- align-items:center;
- gap:8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-
-/* mobile select styling */
-.mobile-lang, .lang-select {
- padding: 8px 10px;
- border-radius: 8px;
- border: 1px solid rgba(0,0,0,0.08);
- background: transparent;
- color: var(--nav-text);
+.theme-btn.svg,
+.theme-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--nav-text);
+  border-radius: 8px;
 }
 
-
-/* theme icon button (use svg) - no square border */
-.theme-btn.svg, .theme-btn {
- background:none;
- border:none;
- padding:4px;
- cursor:pointer;
- color: var(--nav-text);
- border-radius: 8px;
+.theme-btn.svg svg,
+.theme-btn svg {
+  display: block;
+  width: 28px;
+  height: 28px;
 }
-.theme-btn.svg svg, .theme-btn svg { display:block; width:28px; height:28px; }
 
-
-/* hovered state (light/dark aware) */
 .theme-btn.svg:hover {
- background: rgba(0,0,0,0.04);
- transform: translateY(-1px);
+  background: rgba(0,0,0,0.04);
+  transform: translateY(-1px);
 }
+
 .dark-theme .theme-btn.svg:hover {
- background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.06);
 }
 
-
-/* Focus outline (accessibility) */
-.theme-btn.svg:focus, .mobile-lang:focus, .lang-select:focus {
- outline: none;
- box-shadow: 0 0 0 4px rgba(90,120,255,0.06);
+.theme-btn.svg:focus,
+.mobile-lang:focus,
+.lang-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(90,120,255,0.06);
 }
 
+/* small-screen spacing fix for fixed navbar: add top padding to content */
+body {
+  padding-top: 64px;
+}
+
+/* --- spacing fixes for auth links --- */
+.nav-right > a {
+  margin-left: 12px;
+  display: inline-block;
+}
+
+.nav-right .btn-link,
+.nav-right .theme-toggle,
+.nav-right .lang-select {
+  margin-left: 12px;
+}
 
 /* ------------------------------
   Responsive rules
   ------------------------------ */
 
-
 /* small screens: hide normal menu and show hamburger */
 @media (max-width: 900px) {
- .nav-left a:not(.brand) { display: none; } /* hide desktop nav links */
- .hamburger { display: inline-flex; }      /* show hamburger */
- .nav-left a.nav-link { display: none; }
+  .nav-left a:not(.brand) {
+    display: none;
+  }
+  .hamburger {
+    display: inline-flex;
+  }
 }
 
-
-/* hide top-right language + auth links on small screens (you requested) */
-@media (max-width: 767.98px) {
- .nav-right .lang-select,
- .nav-right .auth-links,
- .nav-right .login-register {   /* support different class names */
-   display: none !important;
-   visibility: hidden;
-   pointer-events: none;
- }
-
-
- /* if you want to hide the desktop theme toggle on mobile uncomment: */
- /* .nav-right .theme-toggle { display: none !important; } */
-}
-
-
-/* small-screen spacing fix for fixed navbar: add top padding to content if needed
-  (you can move this into a global layout file instead of navbar scss) */
-:root body { padding-top: 64px; } /* optional - remove if you already handle it */
-
-
-/* --- spacing fixes for auth links --- */
-.nav-right {
- display: flex;
- gap: 8px; /* small default gap between right-side items */
- align-items: center;
-}
-
-
-/* ensure auth links visible and spaced */
-.auth-links {
- display: flex;
- gap: 14px;
- align-items: center;
-}
-
-
-/* fallback if you didn't add .auth-links wrapper */
-.nav-right > a {
- margin-left: 12px;
- display: inline-block;
-}
-
-
-/* keep theme/lang/button spacing consistent */
-.nav-right .btn-link,
-.nav-right .theme-toggle,
-.nav-right .lang-select {
- margin-left: 12px;
-}
-
-
-/* mobile: hide redundant top-right links if you already use mobile drawer */
+/* small screens: hide top-right language + auth links + login/register + theme toggle */
 @media (max-width: 768px) {
- .nav-right .auth-links,
- .nav-right .lang-select {
-   display: none !important;
-   visibility: hidden;
-   pointer-events: none;
- }
+  .nav-right .lang-select,
+  .nav-right .auth-links,
+  .nav-right .login-register {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* make navbar a bit tighter */
+  .app-navbar {
+    padding: 8px 12px;
+  }
+
+  /* ensure username wraps to next line rather than overflow */
+  .nav-user {
+    max-width: 130px;
+    text-align: right;
+  }
+
+  /* FORCE hide theme toggle on small screens */
+  .theme-toggle {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
-
-.site-logo {
- width: 160px;
- height: auto;
+/* >>> desktop logo override (bigger on desktop) <<< */
+@media (min-width: 900px) {
+  .site-logo {
+    width: 180px;
+    height: auto;
+  }
 }

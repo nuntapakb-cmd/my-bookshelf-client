@@ -205,3 +205,56 @@ body {
   padding-top: 64px !important; /* Prevent the fixed navbar from covering the content */
   transition: background-color .15s, color .15s;
 }
+
+/* ซ่อนลิงก์ logout บนจอเล็ก (มือถือ) */
+@media (max-width: 768px) {
+  .nav-logout-link {
+    display: none;
+  }
+}
+
+/* Make filters/search area mobile-friendly on small screens */
+@media (max-width: 768px) {
+
+  /* allow filter controls to wrap into multiple rows */
+  .citat-page .filters-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* each filter item takes full width on mobile */
+  .citat-page .filters-row > * {
+    flex: 1 1 100%;
+  }
+
+  /* date From / To share space on the same row */
+  .citat-page .filters-row label {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+
+  /* Reset / Add New buttons also share one row */
+  .citat-page .filters-row .btn {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+}
+
+/* Make the Books search / action row mobile-friendly */
+@media (max-width: 768px) {
+
+  /* allow filters row to wrap into multiple lines */
+  .books-page .filters-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* each item (search, buttons) uses full width on mobile */
+  .books-page .filters-row > * {
+    flex: 1 1 100%;
+  }
+
+  /* buttons (Refresh / Add) share the same row */
+  .books-page .filters-row .btn {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+}
+

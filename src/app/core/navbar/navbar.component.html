@@ -6,7 +6,7 @@
        src="/MyBookshelf(400x150px)-2.svg"
        alt="{{ 'APP_TITLE' | translate }} logo"
        class="site-logo"
-       width="400"
+       width="600"
      />
    </a>
 
@@ -36,7 +36,7 @@
      <span class="nav-user">
        {{ 'NAV_HELLO' | translate:{ username: auth.user?.username } }}
      </span>
-     <button class="btn-link" (click)="logout()">
+     <button class="btn-link nav-logout-link" (click)="logout()">
        {{ 'NAV_LOGOUT' | translate }}
      </button>
    </ng-container>
@@ -164,6 +164,8 @@
    </ul>
  </div>
 </div>
+
+
 
 
 
