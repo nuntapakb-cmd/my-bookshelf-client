@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Citat } from '../../models/citat';
+import { environment } from '../../../environments/environment';
 
 export interface CitatQuery {
   search?: string;
@@ -18,7 +19,8 @@ export interface CitatQuery {
 @Injectable({ providedIn: 'root' })
 export class CitatService {
 
-  private baseUrl = 'http://localhost:5014/api/Citat';
+  // use environment variable so prod build points to Azure API
+  private baseUrl = `${environment.apiBaseUrl}/Citat`;
 
   constructor(private http: HttpClient) {}
 
