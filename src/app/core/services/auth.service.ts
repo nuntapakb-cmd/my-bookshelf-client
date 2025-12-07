@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   // 🔧 URL backend
-  private base = 'http://localhost:5014/api/Auth';
+  private base = environment.apiBaseUrl;
 
   constructor(private http: HttpClient, private router: Router) {}
 
