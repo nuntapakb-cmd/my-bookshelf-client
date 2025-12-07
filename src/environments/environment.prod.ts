@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://YOUR-BACKEND-DOMAIN/api/Auth'  // Change to the actual backend URL
-
+  apiBaseUrl: 'https://mybookshelf-api-hma9aqbgerdzh9a8.canadacentral-01.azurewebsites.net/api'
 };
