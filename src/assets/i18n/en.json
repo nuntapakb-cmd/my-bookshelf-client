@@ -130,7 +130,19 @@
   "BTN_EDIT": "Edit",
   "BTN_DELETE": "Delete",
 
-  "BOOK_FORM_EDIT": "Edit Book"
+  "BOOK_FORM_EDIT": "Edit Book",
+
+  "BOOK_FORM_ADD": "Add Book",
+
+  "REGISTER_EMAIL": "Email (will be used to login)",
+  "REGISTER_USERNAME_EMAIL": "Username / Email",
+  "REGISTER_EMAIL_REQUIRED": "Email is required.",
+  "REGISTER_USERNAME_OPTIONAL": "Username (optional)",
+  "REGISTER_USERNAME_HINT": "You can log in using your email.",
+
+  "LOGIN_EMAIL": "Email",
+  "LOGIN_EMAIL_REQUIRED": "Email is required."
+
 
 
 }

@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../core/services/auth.service';
 
-
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -15,24 +14,27 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  model = { username: '', password: '', confirmPassword: '' };
+  model = {
+    email: '',         // required
+    password: '',
+    confirmPassword: ''
+  };
+
   error: string | null = null;
   loading = false;
 
   constructor(private auth: AuthService, private router: Router) {}
 
   passwordsMatch(): boolean {
-    return (
-      !!this.model.password &&
-      this.model.password === this.model.confirmPassword
-    );
+    return this.model.password === this.model.confirmPassword;
   }
 
   onSubmit() {
     if (this.loading) return;
 
-    if (!this.model.username || !this.model.password) {
-      this.error = 'Please fill all fields.';
+    // basic front-end validation
+    if (!this.model.email || !this.model.password) {
+      this.error = 'Please fill required fields correctly.';
       return;
     }
 
@@ -44,13 +46,18 @@ export class RegisterComponent {
     this.loading = true;
     this.error = null;
 
-    this.auth.register(this.model.username, this.model.password).subscribe({
+    const payload = {
+      email: this.model.email,
+      password: this.model.password,
+      confirmPassword: this.model.confirmPassword
+    };
+
+    this.auth.register(payload).subscribe({
       next: () => {
         this.loading = false;
         this.router.navigate(['/login']);
       },
-      error: (err: any) => {
-        console.error('Register failed', err);
+      error: (err) => {
         this.error = err?.error?.message || 'Register failed.';
         this.loading = false;
       }

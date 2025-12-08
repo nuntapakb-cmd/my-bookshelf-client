@@ -7,27 +7,28 @@
       <!-- ngForm -->
       <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
 
-        <!-- Username -->
+        <!-- Login Email -->
         <div class="mb-3">
-          <label>{{ 'LOGIN_USERNAME' | translate }}</label>
+          <label>{{ 'LOGIN_EMAIL' | translate }}</label>
 
           <input
-            id="username"
-            type="text"
+            id="email"
+            type="email"
             class="form-control"
-            name="username"
-            [(ngModel)]="model.username"
+            name="email"
+            [(ngModel)]="model.email"
             required
           />
+
           <!-- Error -->
-          <div class="text-danger small" *ngIf="loginForm.submitted && !model.username">
-            Username is required.
+          <div class="text-danger small" *ngIf="loginForm.submitted && !model.email">
+            {{ 'LOGIN_EMAIL_REQUIRED' | translate }}
           </div>
         </div>
 
         <!-- Password -->
         <div class="mb-3">
-         <label>{{ 'LOGIN_PASSWORD' | translate }}</label>
+          <label>{{ 'LOGIN_PASSWORD' | translate }}</label>
 
           <input
             id="password"
@@ -37,24 +38,29 @@
             [(ngModel)]="model.password"
             required
           />
+
           <div class="text-danger small" *ngIf="loginForm.submitted && !model.password">
-            Password is required.
+            {{ 'LOGIN_PASSWORD_REQUIRED' | translate }}
           </div>
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
-  {{ 'LOGIN_BTN' | translate }}
-</button>
+        <button 
+          type="submit" 
+          class="btn btn-primary w-100"
+          [disabled]="loginForm.invalid">
+          {{ 'LOGIN_BTN' | translate }}
+        </button>
 
       </form>
 
-      <!-- Optional: Link to Register -->
+      <!-- Link to Register -->
       <div class="text-center mt-3">
-          {{ 'LOGIN_PROMPT' | translate }}
-            <a routerLink="/register">
+        {{ 'LOGIN_PROMPT' | translate }}
+        <a routerLink="/register">
           {{ 'REGISTER_LINK' | translate }}
-  </a>
+        </a>
+      </div>
 
     </div>
   </div>

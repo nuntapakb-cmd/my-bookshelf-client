@@ -7,30 +7,26 @@
       <!-- Template-driven form -->
       <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
 
-        <!-- Username -->
+        <!-- Email (used for login) -->
         <div class="mb-3">
-          <label for="username" class="form-label">
-            {{ 'REGISTER_USERNAME' | translate }}
-          </label>
+          <label for="email" class="form-label">{{ 'REGISTER_EMAIL' | translate }}</label>
           <input
-            id="username"
-            name="username"
-            type="text"
+            id="email"
+            name="email"
+            type="email"
             class="form-control"
-            [(ngModel)]="model.username"
+            [(ngModel)]="model.email"
             required
-            [placeholder]="'REGISTER_USERNAME' | translate"
+            [placeholder]="'REGISTER_EMAIL' | translate"
           />
-          <div class="text-danger small" *ngIf="registerForm.submitted && !model.username">
-            {{ 'LOGIN_USERNAME_REQUIRED' | translate }}
+          <div class="text-danger small" *ngIf="registerForm.submitted && !model.email">
+            {{ 'REGISTER_EMAIL_REQUIRED' | translate }}
           </div>
         </div>
 
         <!-- Password -->
         <div class="mb-3">
-          <label for="password" class="form-label">
-            {{ 'REGISTER_PASSWORD' | translate }}
-          </label>
+          <label for="password" class="form-label">{{ 'REGISTER_PASSWORD' | translate }}</label>
           <input
             id="password"
             name="password"
@@ -44,23 +40,14 @@
           <div class="text-danger small" *ngIf="registerForm.submitted && !model.password">
             {{ 'LOGIN_PASSWORD_REQUIRED' | translate }}
           </div>
-          <div
-            class="text-danger small"
-            *ngIf="
-              registerForm.submitted &&
-              model.password &&
-              model.password.length < 6
-            "
-          >
+          <div class="text-danger small" *ngIf="registerForm.submitted && model.password && model.password.length < 6">
             {{ 'PASSWORD_MIN_LENGTH' | translate }}
           </div>
         </div>
 
         <!-- Confirm password -->
         <div class="mb-3">
-          <label for="confirmPassword" class="form-label">
-            {{ 'REGISTER_CONFIRM_PASSWORD' | translate }}
-          </label>
+          <label for="confirmPassword" class="form-label">{{ 'REGISTER_CONFIRM_PASSWORD' | translate }}</label>
           <input
             id="confirmPassword"
             name="confirmPassword"
@@ -70,20 +57,10 @@
             required
             [placeholder]="'REGISTER_CONFIRM_PASSWORD' | translate"
           />
-          <div
-            class="text-danger small"
-            *ngIf="registerForm.submitted && !model.confirmPassword"
-          >
+          <div class="text-danger small" *ngIf="registerForm.submitted && !model.confirmPassword">
             {{ 'CONFIRM_PASSWORD_REQUIRED' | translate }}
           </div>
-          <div
-            class="text-danger small"
-            *ngIf="
-              registerForm.submitted &&
-              !passwordsMatch() &&
-              model.confirmPassword
-            "
-          >
+          <div class="text-danger small" *ngIf="registerForm.submitted && !passwordsMatch() && model.confirmPassword">
             {{ 'PASSWORDS_NOT_MATCH' | translate }}
           </div>
         </div>
@@ -99,9 +76,7 @@
 
       <p class="account-link mt-3 text-center">
         {{ 'REGISTER_PROMPT' | translate }}
-        <a routerLink="/login" class="login-link">
-          {{ 'LOGIN_LINK' | translate }}
-        </a>
+        <a routerLink="/login" class="login-link">{{ 'LOGIN_LINK' | translate }}</a>
       </p>
 
     </div>

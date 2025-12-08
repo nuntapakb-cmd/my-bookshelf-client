@@ -16,6 +16,9 @@ import { Book } from '../../../models/book';
   styleUrls: ['./form.component.scss']
 })
 export class BookFormComponent implements OnInit {
+
+  titleKey = 'BOOK_FORM_ADD';
+
   // model: include publishedDate (string yyyy-mm-dd for date input)
   model: Partial<Book & { publishedDate?: string }> = {
   title: '',
@@ -29,6 +32,7 @@ export class BookFormComponent implements OnInit {
   error: string | null = null;
   private bookId?: number;
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -40,6 +44,7 @@ export class BookFormComponent implements OnInit {
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
       this.isEdit = true;
+      this.titleKey = 'BOOK_FORM_EDIT';
       const id = Number(idParam);
       this.bookId = id;
       this.loadBook(id);

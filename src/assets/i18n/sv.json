@@ -129,7 +129,20 @@
   "BTN_EDIT": "Redigera",
   "BTN_DELETE": "Radera",
 
-  "BOOK_FORM_EDIT": "Redigera bok"
+  "BOOK_FORM_EDIT": "Redigera bok",
+
+  "BOOK_FORM_ADD": "Lägg till bok",
+
+  "REGISTER_EMAIL": "E-post (används för inloggning)",
+  "REGISTER_USERNAME_EMAIL": "Användarnamn / E-post",
+  "REGISTER_EMAIL_REQUIRED": "E-post är obligatorisk.",
+  "REGISTER_USERNAME_OPTIONAL": "Användarnamn (valfritt)",
+  "REGISTER_USERNAME_HINT": "Du kan logga in med din e-post.",
+
+  "LOGIN_EMAIL": "E-post",
+  "LOGIN_EMAIL_REQUIRED": "E-post krävs."
+
+
 
   
 }

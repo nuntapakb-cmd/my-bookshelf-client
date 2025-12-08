@@ -10,18 +10,20 @@ export class AuthService {
   // 🔧 URL backend
   private base = `${environment.apiBaseUrl}/Auth`;
 
-
   constructor(private http: HttpClient, private router: Router) {}
 
   // -------------------------
-  // LOGIN
+  // LOGIN (use email login)
   // -------------------------
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.base}/login`, { username, password }).pipe(
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.base}/login`, { email, password }).pipe(
       map((res: any) => {
         if (res && res.token) {
+          // storage token
           localStorage.setItem('mybooks_token', res.token);
-          localStorage.setItem('mybooks_user', JSON.stringify({ username }));
+
+          const storedUser = { email: res.email ?? email, username: res.username ?? null };
+          localStorage.setItem('mybooks_user', JSON.stringify(storedUser));
         }
         return res;
       })
@@ -31,8 +33,9 @@ export class AuthService {
   // -------------------------
   // REGISTER
   // -------------------------
-  register(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.base}/register`, { username, password });
+  register(data: { email: string; password: string; confirmPassword?: string; username?: string }): Observable<any> {
+    // backend support username
+    return this.http.post(`${this.base}/register`, data);
   }
 
   // -------------------------
@@ -43,9 +46,41 @@ export class AuthService {
   }
 
   // -------------------------
-  // GET USER (from localStorage)
+  // Decode JWT token (read payload)
   // -------------------------
-  get user(): { username: string } | null {
+  private decodeToken(): any | null {
+    const token = this.getToken();
+    if (!token) return null;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload;
+    } catch {
+      return null;
+    }
+  }
+
+  // -------------------------
+  // GET USER (email / username)
+  // -------------------------
+  get user(): { email?: string; username?: string } | null {
+    // 1) Read from token first
+    const payload = this.decodeToken();
+    if (payload) {
+    // In JWT:
+    // - Username stored in custom claim: "username"
+    // - Email currently comes from ClaimTypes.Name => key URI
+      const emailFromClaim =
+        payload.email ??
+        payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+
+      return {
+        email: emailFromClaim,
+        username: payload.username
+      };
+    }
+
+    // 2) fallback: read from localStorage
     const raw = localStorage.getItem('mybooks_user');
     if (!raw) return null;
     try {
