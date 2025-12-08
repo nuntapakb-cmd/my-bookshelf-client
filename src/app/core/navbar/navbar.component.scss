@@ -325,6 +325,17 @@ body {
     visibility: hidden;
     pointer-events: none;
   }
+    .site-logo {
+    width: 100px;        /* <--- logo size on mobile */
+  }
+
+    .nav-left {
+    gap: 8px;            /* <--- bridge the gap */
+  }
+  .nav-user {
+    max-width: 180px;    /* <--- more space for Hi,xxxx */
+  }
+
 
   /* make navbar a bit tighter */
   .app-navbar {

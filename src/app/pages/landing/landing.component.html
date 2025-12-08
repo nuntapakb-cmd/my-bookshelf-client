@@ -21,8 +21,13 @@
 
           <!-- CTA Buttons -->
           <div class="cta-row">
-            <a class="btn primary" routerLink="/register">{{ 'LANDING_CTA_START' | translate }}</a>
-            <a class="btn ghost" routerLink="/login">{{ 'LANDING_CTA_LOGIN' | translate }}</a>
+            <button class="btn primary" type="button" (click)="onGetStarted()">
+              {{ 'LANDING_CTA_START' | translate }}
+            </button>  
+
+            <a class="btn ghost" routerLink="/login">
+              {{ 'LANDING_CTA_LOGIN' | translate }}
+            </a>
           </div>
 
           <!-- Feature List -->

@@ -94,7 +94,7 @@ export class AuthService {
   // CHECK LOGIN STATUS
   // -------------------------
   isLoggedIn(): boolean {
-    return !!this.getToken();
+    return !!this.getToken();   // get mybooks_token
   }
 
   // -------------------------

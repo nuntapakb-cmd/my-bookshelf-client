@@ -3,6 +3,5 @@ export interface Book {
   id?: number;
   title: string;
   author?: string;
-  publishedDate?: string;
-  publishedAt?: String,
+  publishedAt?: string | Date;
 }
