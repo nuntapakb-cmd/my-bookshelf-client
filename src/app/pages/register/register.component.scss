@@ -1,3 +1,4 @@
+/* link under button */
 .account-link {
   margin-top: 12px;
   text-align: center;
@@ -14,4 +15,18 @@
 
 .login-link:hover {
   text-decoration: underline;
+}
+
+/* ===== FORM INPUT COLORS ===== */
+
+/* Make Email / Password / Confirm Password the same color */
+#email.form-control,
+#password.form-control,
+#confirmPassword.form-control {
+  background-color: #e9ecef;
+}
+
+/* Prevent overrides, especially confirm */
+#confirmPassword.form-control {
+  background-color: #e9ecef !important;
 }
