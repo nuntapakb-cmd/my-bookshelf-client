@@ -218,6 +218,12 @@ fa-icon {
   opacity: .8;
 }
 
+.dark-theme fa-icon,
+body.app-dark-mode fa-icon {
+  color: rgba(255,255,255,0.9) !important;
+  opacity: 1 !important;
+}
+
 /* Hide the logout link on small screens (mobile) */
 @media (max-width: 768px) {
   .nav-logout-link {
