@@ -1,3 +1,4 @@
+// styles.scss
 /* global dark-mode overrides (put in styles.scss or theme scss) */
 :root {
   --page-bg: #fafafa;
@@ -179,10 +180,7 @@ textarea.form-control[disabled],
 select.form-select[disabled],
 input.form-control[readonly],
 textarea.form-control[readonly] {
-  background: var(--form-bg) !important;
-  color: var(--form-text) !important;
-  border: 1px solid var(--form-border) !important;
-  opacity: 0.8;          
+  opacity: 0.9;
   cursor: not-allowed;
 }
 
