@@ -1,4 +1,3 @@
-// src/app/pages/register/register.component.ts
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,7 +14,7 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class RegisterComponent {
   model = {
-    email: '',         // required
+    email: '',      
     password: '',
     confirmPassword: ''
   };
@@ -23,10 +22,24 @@ export class RegisterComponent {
   error: string | null = null;
   loading = false;
 
+  // Control show/hide password
+  showPassword = false;
+  showConfirmPassword = false;
+
   constructor(private auth: AuthService, private router: Router) {}
 
   passwordsMatch(): boolean {
     return this.model.password === this.model.confirmPassword;
+  }
+
+  // Switch password fields
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  // Toggle the confirm password field
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   onSubmit() {

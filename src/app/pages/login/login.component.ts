@@ -15,7 +15,6 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  // ใช้ email แทน username
   model = {
     email: '',
     password: ''
@@ -24,7 +23,15 @@ export class LoginComponent {
   loading = false;
   error: string | null = null;
 
+  // Toggle show/hide password
+  showPassword = false;
+
   constructor(private auth: AuthService, private router: Router) {}
+
+  // Eye shape swap function
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 
   onSubmit() {
     if (this.loading) return;
@@ -46,14 +53,14 @@ export class LoginComponent {
             localStorage.setItem('mybooks_token', res.token);
           }
 
-          // เก็บข้อมูลผู้ใช้ที่ backend ส่งกลับ หากไม่มี ให้เก็บ email ที่ใช้ล็อกอิน
+          // Store the returned user data, or fallback to the login email
           const userToStore = (res && res.user)
             ? res.user
             : { email: res?.email ?? this.model.email };
 
           localStorage.setItem('mybooks_user', JSON.stringify(userToStore));
 
-          // ไปที่หน้า Home หลังล็อกอิน
+          // Go to the Home page after login
           this.router.navigate(['/home']);
         },
         error: (err) => {

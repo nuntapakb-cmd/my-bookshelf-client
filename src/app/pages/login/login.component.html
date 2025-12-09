@@ -1,3 +1,5 @@
+// src/app/pages/login/login.component.html
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 col-lg-4 mx-auto">
@@ -30,26 +32,43 @@
         <div class="mb-3">
           <label>{{ 'LOGIN_PASSWORD' | translate }}</label>
 
-          <input
-            id="password"
-            type="password"
-            class="form-control"
-            name="password"
-            [(ngModel)]="model.password"
-            required
-          />
+          <div class="position-relative">
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control"
+              name="password"
+              [(ngModel)]="model.password"
+              required
+            />
+
+            <!-- รูปตา/ปุ่มสลับรหัสผ่าน -->
+            <span
+              class="position-absolute end-0 top-50 translate-middle-y pe-3"
+              style="cursor:pointer;"
+              (click)="togglePasswordVisibility()"
+            >
+              {{ showPassword ? '🙈' : '👁' }}
+            </span>
+          </div>
 
           <div class="text-danger small" *ngIf="loginForm.submitted && !model.password">
             {{ 'LOGIN_PASSWORD_REQUIRED' | translate }}
           </div>
         </div>
 
+        <!-- Error จากฝั่ง TS (login fail) -->
+        <div *ngIf="error" class="text-danger small mb-2">
+          {{ error }}
+        </div>
+
         <!-- Submit Button -->
         <button 
           type="submit" 
           class="btn btn-primary w-100"
-          [disabled]="loginForm.invalid">
-          {{ 'LOGIN_BTN' | translate }}
+          [disabled]="loginForm.invalid || loading">
+          <span *ngIf="!loading">{{ 'LOGIN_BTN' | translate }}</span>
+          <span *ngIf="loading">Loading...</span>
         </button>
 
       </form>

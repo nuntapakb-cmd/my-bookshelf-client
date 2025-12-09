@@ -27,16 +27,29 @@
         <!-- Password -->
         <div class="mb-3">
           <label for="password" class="form-label">{{ 'REGISTER_PASSWORD' | translate }}</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            class="form-control"
-            [(ngModel)]="model.password"
-            required
-            minlength="6"
-            [placeholder]="'REGISTER_PASSWORD' | translate"
-          />
+
+          <div class="position-relative">
+            <input
+              id="password"
+              name="password"
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control"
+              [(ngModel)]="model.password"
+              required
+              minlength="6"
+              [placeholder]="'REGISTER_PASSWORD' | translate"
+            />
+
+            <!-- Eye icon for password -->
+            <span
+              class="position-absolute end-0 top-50 translate-middle-y pe-3"
+              style="cursor:pointer;"
+              (click)="togglePasswordVisibility()"
+            >
+              {{ showPassword ? '🙈' : '👁' }}
+            </span>
+          </div>
+
           <div class="text-danger small" *ngIf="registerForm.submitted && !model.password">
             {{ 'LOGIN_PASSWORD_REQUIRED' | translate }}
           </div>
@@ -48,15 +61,28 @@
         <!-- Confirm password -->
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">{{ 'REGISTER_CONFIRM_PASSWORD' | translate }}</label>
-          <input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            class="form-control"
-            [(ngModel)]="model.confirmPassword"
-            required
-            [placeholder]="'REGISTER_CONFIRM_PASSWORD' | translate"
-          />
+
+          <div class="position-relative">
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              class="form-control"
+              [(ngModel)]="model.confirmPassword"
+              required
+              [placeholder]="'REGISTER_CONFIRM_PASSWORD' | translate"
+            />
+
+            <!-- Eye icon for confirm password -->
+            <span
+              class="position-absolute end-0 top-50 translate-middle-y pe-3"
+              style="cursor:pointer;"
+              (click)="toggleConfirmPasswordVisibility()"
+            >
+              {{ showConfirmPassword ? '🙈' : '👁' }}
+            </span>
+          </div>
+
           <div class="text-danger small" *ngIf="registerForm.submitted && !model.confirmPassword">
             {{ 'CONFIRM_PASSWORD_REQUIRED' | translate }}
           </div>
@@ -65,12 +91,18 @@
           </div>
         </div>
 
+        <!-- Error from TS -->
+        <div *ngIf="error" class="text-danger small mb-2">
+          {{ error }}
+        </div>
+
         <button
           type="submit"
           class="btn btn-success w-100"
-          [disabled]="registerForm.invalid || !passwordsMatch()"
+          [disabled]="registerForm.invalid || !passwordsMatch() || loading"
         >
-          {{ 'REGISTER_BTN' | translate }}
+          <span *ngIf="!loading">{{ 'REGISTER_BTN' | translate }}</span>
+          <span *ngIf="loading">Loading...</span>
         </button>
       </form>
 
