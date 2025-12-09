@@ -157,14 +157,19 @@ textarea.form-control::placeholder {
   opacity: 1;
 }
 
-/* focus state - subtle highlight */
+/* focus state - improved contrast */
 input.form-control:focus,
 textarea.form-control:focus,
 select.form-select:focus {
   outline: none !important;
-  border-color: color-mix(in srgb, var(--form-border) 30%, var(--form-text) 70%) !important;
-  box-shadow: var(--form-focus-shadow) !important;
-  background: color-mix(in srgb, var(--form-bg) 92%, white 8%) !important;
+  border-color: var(--form-border) !important;
+  background: color-mix(in srgb, var(--form-bg) 60%, black 40%) !important;
+  box-shadow: none !important;
+}
+
+body.app-dark-mode input.form-control:focus,
+.dark-theme input.form-control:focus {
+  background: rgba(255,255,255,0.08) !important;
 }
 
 /* disabled / readonly */
