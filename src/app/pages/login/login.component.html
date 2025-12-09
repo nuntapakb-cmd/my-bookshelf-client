@@ -42,14 +42,14 @@
               required
             />
 
-            <!-- รูปตา/ปุ่มสลับรหัสผ่าน -->
-            <span
+            <!-- Password toggle button -->
+            <fa-icon
+              [icon]="showPassword ? 'eye-slash' : 'eye'"
               class="position-absolute end-0 top-50 translate-middle-y pe-3"
               style="cursor:pointer;"
               (click)="togglePasswordVisibility()"
-            >
-              {{ showPassword ? '🙈' : '👁' }}
-            </span>
+            ></fa-icon>
+
           </div>
 
           <div class="text-danger small" *ngIf="loginForm.submitted && !model.password">

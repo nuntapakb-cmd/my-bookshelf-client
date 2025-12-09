@@ -41,13 +41,13 @@
             />
 
             <!-- Eye icon for password -->
-            <span
+            <fa-icon
+              [icon]="showPassword ? 'eye-slash' : 'eye'"
               class="position-absolute end-0 top-50 translate-middle-y pe-3"
               style="cursor:pointer;"
               (click)="togglePasswordVisibility()"
-            >
-              {{ showPassword ? '🙈' : '👁' }}
-            </span>
+            ></fa-icon>
+
           </div>
 
           <div class="text-danger small" *ngIf="registerForm.submitted && !model.password">
@@ -74,13 +74,13 @@
             />
 
             <!-- Eye icon for confirm password -->
-            <span
+            <fa-icon
+              [icon]="showConfirmPassword ? 'eye-slash' : 'eye'"
               class="position-absolute end-0 top-50 translate-middle-y pe-3"
               style="cursor:pointer;"
               (click)="toggleConfirmPasswordVisibility()"
-            >
-              {{ showConfirmPassword ? '🙈' : '👁' }}
-            </span>
+            ></fa-icon>
+            
           </div>
 
           <div class="text-danger small" *ngIf="registerForm.submitted && !model.confirmPassword">

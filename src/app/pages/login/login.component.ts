@@ -6,11 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../core/services/auth.service';
 import { take } from 'rxjs/operators';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule, FontAwesomeModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -26,7 +29,14 @@ export class LoginComponent {
   // Toggle show/hide password
   showPassword = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService, 
+    private router: Router, 
+    library: FaIconLibrary
+  ) {
+  library.addIcons(faEye, faEyeSlash);
+  }
+
 
   // Eye shape swap function
   togglePasswordVisibility() {
@@ -35,8 +45,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loading) return;
-
-    // เบื้องต้นให้เช็กฟิลด์ด้วย จะช่วยลด request เปล่า ๆ
+    
     if (!this.model.email || !this.model.password) {
       this.error = 'Please fill all fields.';
       return;

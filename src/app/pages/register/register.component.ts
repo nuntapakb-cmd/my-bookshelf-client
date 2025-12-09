@@ -1,20 +1,23 @@
+// src/app/pages/register/register.component.ts
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../core/services/auth.service';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule, FontAwesomeModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   model = {
-    email: '',      
+    email: '',
     password: '',
     confirmPassword: ''
   };
@@ -26,7 +29,13 @@ export class RegisterComponent {
   showPassword = false;
   showConfirmPassword = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    library: FaIconLibrary 
+  ) {
+    library.addIcons(faEye, faEyeSlash);
+  }
 
   passwordsMatch(): boolean {
     return this.model.password === this.model.confirmPassword;
