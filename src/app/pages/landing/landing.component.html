@@ -21,13 +21,23 @@
 
           <!-- CTA Buttons -->
           <div class="cta-row">
-            <button class="btn primary" type="button" (click)="onGetStarted()">
-              {{ 'LANDING_CTA_START' | translate }}
-            </button>  
+              <!-- Get Started — it's free -->
+              <a
+                class="btn primary"
+                href=""
+                (click)="onGetStarted(); $event.preventDefault()"
+              >
+                {{ 'LANDING_CTA_START' | translate }}
+              </a>
 
-            <a class="btn ghost" routerLink="/login">
-              {{ 'LANDING_CTA_LOGIN' | translate }}
-            </a>
+              <!-- I already have an account -->
+              <a
+                class="btn ghost"
+                href=""
+                (click)="onAlreadyHaveAccount(); $event.preventDefault()"
+              >
+                {{ 'LANDING_CTA_LOGIN' | translate }}
+              </a>
           </div>
 
           <!-- Feature List -->
