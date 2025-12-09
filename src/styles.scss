@@ -214,13 +214,7 @@ body {
 
 /* password toggle icons (login/register) */
 fa-icon {
-  color: currentColor;
-  opacity: .8;
-}
-
-.dark-theme fa-icon,
-body.app-dark-mode fa-icon {
-  color: rgba(255,255,255,0.9) !important;
+  color: #4b5563 !important; 
   opacity: 1 !important;
 }
 
