@@ -98,6 +98,7 @@ input.form-control, textarea.form-control, select.form-select, .form-control {
   border: 1px solid rgba(255,255,255,0.04) !important;
 }
 
+
 /* page title spacing similar to My Quotes */
 .page-title, .greeting h1 {
   color: var(--nav-text);
@@ -267,6 +268,5 @@ fa-icon {
   .books-page .filters-row .btn {
     flex: 1 1 calc(50% - 0.5rem);
   }
-
 
 }
