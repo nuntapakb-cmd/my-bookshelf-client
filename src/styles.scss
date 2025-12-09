@@ -179,7 +179,10 @@ textarea.form-control[disabled],
 select.form-select[disabled],
 input.form-control[readonly],
 textarea.form-control[readonly] {
-  opacity: 0.9;
+  background: var(--form-bg) !important;
+  color: var(--form-text) !important;
+  border: 1px solid var(--form-border) !important;
+  opacity: 0.8;          
   cursor: not-allowed;
 }
 
