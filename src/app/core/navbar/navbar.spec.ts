@@ -24,8 +24,8 @@ describe('NavbarComponent', () => {
  beforeEach(async () => {
    await TestBed.configureTestingModule({
      imports: [
-       NavbarComponent,        // standalone component must be imported here
-       RouterTestingModule     // use RouterTestingModule when testing routing-dependent components
+       NavbarComponent,       
+       RouterTestingModule    
      ],
      providers: [
        { provide: AuthService, useValue: authStub },
