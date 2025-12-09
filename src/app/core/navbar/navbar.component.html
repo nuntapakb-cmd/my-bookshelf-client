@@ -33,9 +33,6 @@
 
 
    <ng-container *ngIf="auth.isLoggedIn(); else guest">
-     <span class="nav-user">
-       {{ 'NAV_HELLO' | translate:{ username: auth.user?.username } }}
-     </span>
      <button class="btn-link nav-logout-link" (click)="logout()">
        {{ 'NAV_LOGOUT' | translate }}
      </button>
