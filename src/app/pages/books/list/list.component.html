@@ -66,7 +66,7 @@
           <td>{{ b.author }}</td>
           <td>
             <ng-container *ngIf="b.publishedAt; else dash">
-              {{ b.publishedAt | date: 'mediumDate' }}
+              {{ b.publishedAt | date: 'mediumDate':'UTC' }}
             </ng-container>
             <ng-template #dash>-</ng-template>
           </td>
@@ -98,7 +98,7 @@
           <p class="mb-2 small">
             <strong>Published:</strong>
             <span *ngIf="b.publishedAt; else none">
-              {{ b.publishedAt | date: 'mediumDate' }}
+              {{ b.publishedAt | date: 'mediumDate':'UTC' }}
             </span>
             <ng-template #none>-</ng-template>
           </p>
