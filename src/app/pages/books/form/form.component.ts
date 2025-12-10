@@ -58,7 +58,6 @@ export class BookFormComponent implements OnInit {
         let inputDate: string | null = null;
 
         if (b.publishedAt) {
-          
           const iso = String(b.publishedAt); // Supports both '2025-12-10' and '2025-12-10T00:00:00.000Z'
           inputDate = iso.slice(0, 10);      // format:yyyy-MM-dd
         }
