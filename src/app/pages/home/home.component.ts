@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { Book } from '../../models/book';
-import { BooksService } from '../books/books.service';
+import { BooksService } from '../../core/services/books.service';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({

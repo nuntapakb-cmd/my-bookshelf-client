@@ -6,7 +6,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Citat } from '../../../models/citat';
 import { Book } from '../../../models/book';
 import { CitatService } from '../citat.service';         
-import { BooksService } from '../../books/books.service';
+import { BooksService } from '../../../core/services/books.service';
+
 
 
 @Component({

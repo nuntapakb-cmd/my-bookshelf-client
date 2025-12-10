@@ -5,7 +5,8 @@ import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { Book } from '../../../models/book';
-import { BooksService } from '../../books/books.service';
+import { BooksService } from '../../../core/services/books.service';
+
 
 @Component({
   selector: 'app-books-list',

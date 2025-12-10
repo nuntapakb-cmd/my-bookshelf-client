@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { BooksService } from '../books.service';
+import { BooksService } from '../../../core/services/books.service';
 import { Book } from '../../../models/book';
 
 @Component({

@@ -8,7 +8,8 @@ import { TranslateModule } from '@ngx-translate/core';
 // <-- ADDED imports: model + services
 import { Citat } from '../citat.model';
 import { CitatService } from '../citat.service';
-import { BooksService } from '../../books/books.service';
+import { BooksService } from '../../../core/services/books.service';
+
 
 @Component({
   selector: 'app-citat-form',
