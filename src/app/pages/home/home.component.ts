@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit {
         this.recentBooks = books
           .slice()
           .sort((a: Book, b: Book) => {
-            const da = a.publishedDate ? new Date(a.publishedDate as string ).getTime() : (a.id ?? 0);
-            const db = b.publishedDate ? new Date(b.publishedDate as string ).getTime() : (b.id ?? 0);
+            const da = a.publishedAt ? new Date(a.publishedAt as string ).getTime() : (a.id ?? 0);
+            const db = b.publishedAt ? new Date(b.publishedAt as string ).getTime() : (b.id ?? 0);
             return db - da;
           })
           .slice(0, this.maxRecent);

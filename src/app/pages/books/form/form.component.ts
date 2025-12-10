@@ -18,11 +18,11 @@ export class BookFormComponent implements OnInit {
 
   titleKey = 'BOOK_FORM_ADD';
 
-  // The form uses `publishedDate` as a string in the format `yyyy-MM-dd`
+  // The form uses `publishedAt` as a string in the format `yyyy-MM-dd`
   model: Partial<Book> = {
     title: '',
     author: '',
-    publishedDate: null
+    publishedAt: null
   };
 
   isEdit = false;
@@ -46,19 +46,19 @@ export class BookFormComponent implements OnInit {
       this.loadBook(id);
     } else {
       this.isEdit = false;
-      this.model = { title: '', author: '', publishedDate: null };
+      this.model = { title: '', author: '', publishedAt: null };
     }
   }
 
-  // Load data from backend → Convert publishedDate (ISO string) to yyyy-MM-dd for input type="date"
+  // Load data from backend → Convert publishedAt (ISO string) to yyyy-MM-dd for input type="date"
   private loadBook(id: number): void {
     this.loading = true;
     this.booksService.getById(id).subscribe({
       next: (b: Book) => {
         let inputDate: string | null = null;
 
-        if (b.publishedDate) {
-          const d = new Date(b.publishedDate as string);
+        if (b.publishedAt) {
+          const d = new Date(b.publishedAt as string);
           if (!isNaN(d.getTime())) {
             const y = d.getFullYear();
             const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -70,7 +70,7 @@ export class BookFormComponent implements OnInit {
         this.model = {
           title: b.title,
           author: b.author,
-          publishedDate: inputDate
+          publishedAt: inputDate
         };
 
         this.loading = false;
@@ -95,7 +95,7 @@ export class BookFormComponent implements OnInit {
     const payload: Book = {
       title: this.model.title!,
       author: this.model.author || '',
-      publishedDate: this.model.publishedDate ?? null
+      publishedAt: this.model.publishedAt ?? null
     };
 
     if (this.isEdit && this.bookId != null) {
