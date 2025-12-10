@@ -18,11 +18,11 @@ export class BookFormComponent implements OnInit {
 
   titleKey = 'BOOK_FORM_ADD';
 
-  // model: form uses publishedDate (string yyyy-MM-dd)
-  model: Partial<Book> & { publishedDate?: string } = {
+  // The form uses `publishedDate` as a string in the format `yyyy-MM-dd`
+  model: Partial<Book> = {
     title: '',
     author: '',
-    publishedDate: undefined
+    publishedDate: null
   };
 
   isEdit = false;
@@ -46,20 +46,33 @@ export class BookFormComponent implements OnInit {
       this.loadBook(id);
     } else {
       this.isEdit = false;
-      this.model = { title: '', author: '', publishedDate: undefined };
+      this.model = { title: '', author: '', publishedDate: null };
     }
   }
 
-  // Load data from backend → convert PublishedDate (ISO string) to publishedDate (yyyy-MM-dd)
+  // Load data from backend → Convert publishedDate (ISO string) to yyyy-MM-dd for input type="date"
   private loadBook(id: number): void {
     this.loading = true;
     this.booksService.getById(id).subscribe({
       next: (b: Book) => {
+        let inputDate: string | null = null;
+
+        if (b.publishedDate) {
+          const d = new Date(b.publishedDate as string);
+          if (!isNaN(d.getTime())) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            inputDate = `${y}-${m}-${dd}`;
+          }
+        }
+
         this.model = {
           title: b.title,
           author: b.author,
-          publishedDate: b.publishedDate ? this.toInputDate(b.publishedDate as string) : undefined
+          publishedDate: inputDate
         };
+
         this.loading = false;
       },
       error: (err: any) => {
@@ -67,17 +80,6 @@ export class BookFormComponent implements OnInit {
         this.loading = false;
       }
     });
-  }
-
-  // Helper: ISO string → yyyy-MM-dd
-  private toInputDate(iso?: string): string | undefined {
-    if (!iso) return undefined;
-    const d = new Date(iso);
-    if (isNaN(d.getTime())) return undefined;
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const dd = String(d.getDate()).padStart(2, '0');
-    return `${y}-${m}-${dd}`;
   }
 
   onSubmit(): void {
@@ -89,17 +91,11 @@ export class BookFormComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    // publishedDate (yyyy-MM-dd) → ISO string
-    let publishedPayload: string | null = null;
-    if (this.model.publishedDate) {
-      const d = new Date(this.model.publishedDate + 'T00:00:00');
-      publishedPayload = isNaN(d.getTime()) ? null : d.toISOString();
-    }
-
-    const payload: any = {
-      title: this.model.title,
-      author: this.model.author,
-      publishedAt: publishedPayload
+    // Send the string directly to the backend (without converting it to Date/UTC)
+    const payload: Book = {
+      title: this.model.title!,
+      author: this.model.author || '',
+      publishedDate: this.model.publishedDate ?? null
     };
 
     if (this.isEdit && this.bookId != null) {
