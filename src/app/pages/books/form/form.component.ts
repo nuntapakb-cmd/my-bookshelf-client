@@ -58,13 +58,9 @@ export class BookFormComponent implements OnInit {
         let inputDate: string | null = null;
 
         if (b.publishedAt) {
-          const d = new Date(b.publishedAt as string);
-          if (!isNaN(d.getTime())) {
-            const y = d.getFullYear();
-            const m = String(d.getMonth() + 1).padStart(2, '0');
-            const dd = String(d.getDate()).padStart(2, '0');
-            inputDate = `${y}-${m}-${dd}`;
-          }
+          
+          const iso = String(b.publishedAt); // Supports both '2025-12-10' and '2025-12-10T00:00:00.000Z'
+          inputDate = iso.slice(0, 10);      // format:yyyy-MM-dd
         }
 
         this.model = {
