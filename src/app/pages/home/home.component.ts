@@ -1,30 +1,38 @@
 // src/app/pages/home/home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf, NgForOf } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { Book } from '../../models/book';
 import { BooksService } from '../../core/services/books.service';
 import { AuthService } from '../../core/services/auth.service';
 
+import { Citat } from '../../models/citat';
+import { CitatService } from '../citat/citat.service';
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule],
+  imports: [CommonModule, NgIf, NgForOf, RouterModule, TranslateModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   recentBooks: Book[] = [];
+
+  latestQuotes: Citat[] = [];
   loading = false;
+  loadingQuotes = false; // separate flag so Books loading isn't affected
   errorMessage: string | null = null;
   greetingName: string | null = null;
 
   readonly maxRecent = 5;
+  readonly maxRecentQuotes = 5; 
 
   constructor(
     private booksService: BooksService,
+    private citatService: CitatService, 
     public auth: AuthService,
     private router: Router,
     private translate: TranslateService
@@ -33,6 +41,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.greetingName = this.auth.user?.username ?? null;
     this.loadRecentBooks();
+    this.loadRecentQuotes();
   }
 
   loadRecentBooks(): void {
@@ -57,6 +66,31 @@ export class HomeComponent implements OnInit {
         console.error(err);
         this.errorMessage = 'ERROR_LOAD_BOOKS';
         this.loading = false;
+      }
+    });
+  }
+
+  // -------------------- NEW: Load latest quotes --------------------
+  loadRecentQuotes(): void {
+    this.loadingQuotes = true;
+
+    this.citatService.getAll().subscribe({
+      next: (quotes: Citat[]) => {
+        this.latestQuotes = (quotes || [])
+          .slice()
+          .sort((a: Citat, b: Citat) => {
+            const da = a.createdAt ? new Date(a.createdAt).getTime() : (a.id ?? 0);
+            const db = b.createdAt ? new Date(b.createdAt).getTime() : (b.id ?? 0);
+            return db - da;
+          })
+          .slice(0, this.maxRecentQuotes);
+
+        this.loadingQuotes = false;
+      },
+      error: (err: any) => {
+        console.error('Failed loading quotes', err);
+        
+        this.loadingQuotes = false;
       }
     });
   }
@@ -93,6 +127,32 @@ export class HomeComponent implements OnInit {
         console.error(err);
 
         const errorText = this.translate.instant('ERROR_DELETE_BOOK');
+        alert(errorText);
+      }
+    });
+  }
+
+  // -------------------- NEW: optional delete/edit for quotes on home --------------------
+  editQuote(id?: number): void {
+    if (id == null) return;
+    this.router.navigate(['/citat', 'edit', id]);
+  }
+
+  deleteQuote(id?: number): void {
+    if (id == null) return;
+
+    const confirmText = this.translate.instant('CONFIRM_DELETE_QUOTE') || 'Delete this quote?';
+    if (!confirm(confirmText)) return;
+
+    this.citatService.delete(id).subscribe({
+      next: () => {
+        // remove from local list and keep UI in sync
+        this.latestQuotes = this.latestQuotes.filter(q => q.id !== id);
+        // don't need to reload all quotes; but you can call loadRecentQuotes() if desired
+      },
+      error: (err: any) => {
+        console.error(err);
+        const errorText = this.translate.instant('ERROR_DELETE_QUOTE') || 'Failed to delete quote';
         alert(errorText);
       }
     });

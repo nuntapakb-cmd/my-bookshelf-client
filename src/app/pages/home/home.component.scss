@@ -182,3 +182,20 @@ body.app-dark-mode {
 .mt-1 { margin-top: .25rem; }
 .mb-1 { margin-bottom: .25rem; }
 .p-1 { padding: .5rem; }
+
+.quotes-section {
+  margin-top: 2rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 0.75rem;
+  font-style: italic;
+  opacity: .9;
+}
+
+.quote-card {
+  background: var(--card-bg);
+  border: 1px solid var(--outline);
+  transition: .12s ease;
+}

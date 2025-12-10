@@ -140,10 +140,14 @@
   "REGISTER_USERNAME_HINT": "Du kan logga in med din e-post.",
 
   "LOGIN_EMAIL": "E-post",
-  "LOGIN_EMAIL_REQUIRED": "E-post krävs."
+  "LOGIN_EMAIL_REQUIRED": "E-post krävs.",
 
 
+  "HOME_LATEST_QUOTES": "Senaste citaten",
+  "QUOTES_EMPTY": "Inga citat ännu.",
+  "QUOTES_VIEW_ALL": "Visa alla citat",
+  "CONFIRM_DELETE_QUOTE": "Är du säker på att du vill ta bort det här citatet?",
+  "ERROR_DELETE_QUOTE": "Det gick inte att ta bort citatet."
 
-  
+
 }
-

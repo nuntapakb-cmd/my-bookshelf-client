@@ -141,7 +141,13 @@
   "REGISTER_USERNAME_HINT": "You can log in using your email.",
 
   "LOGIN_EMAIL": "Email",
-  "LOGIN_EMAIL_REQUIRED": "Email is required."
+  "LOGIN_EMAIL_REQUIRED": "Email is required.",
+
+  "HOME_LATEST_QUOTES": "Latest Quotes",
+  "QUOTES_EMPTY": "No quotes yet.",
+  "QUOTES_VIEW_ALL": "View all quotes",
+  "CONFIRM_DELETE_QUOTE": "Are you sure you want to delete this quote?",
+  "ERROR_DELETE_QUOTE": "Failed to delete quote."
 
 
 
