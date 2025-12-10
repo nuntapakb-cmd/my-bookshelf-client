@@ -61,7 +61,7 @@
                 <h5 class="card-title">{{ b.title }}</h5>
                 <p class="card-text mb-1"><small class="text-muted">{{ b.author || 'ไม่ทราบผู้แต่ง' }}</small></p>
                 <p class="text-muted small mb-0">
-                  <span *ngIf="b.publishedAt">{{ b.publishedAt | date:'mediumDate' }}</span>
+                  <span *ngIf="b.publishedDate">{{ b.publishedDate | date:'mediumDate' }}</span>
                 </p>
               </div>
 

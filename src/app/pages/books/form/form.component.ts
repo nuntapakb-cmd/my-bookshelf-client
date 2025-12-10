@@ -50,7 +50,7 @@ export class BookFormComponent implements OnInit {
     }
   }
 
-  // Load data from backend → convert publishedAt (ISO string) to publishedDate (yyyy-MM-dd)
+  // Load data from backend → convert PublishedDate (ISO string) to publishedDate (yyyy-MM-dd)
   private loadBook(id: number): void {
     this.loading = true;
     this.booksService.getById(id).subscribe({
@@ -58,7 +58,7 @@ export class BookFormComponent implements OnInit {
         this.model = {
           title: b.title,
           author: b.author,
-          publishedDate: b.publishedAt ? this.toInputDate(b.publishedAt as string) : undefined
+          publishedDate: b.publishedDate ? this.toInputDate(b.publishedDate as string) : undefined
         };
         this.loading = false;
       },
